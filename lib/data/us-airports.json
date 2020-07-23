@@ -1,0 +1,2910 @@
+[
+    {
+        "name": "Aberdeen, SD",
+        "code": "ABR"
+    },
+    {
+        "name": "Abilene, TX",
+        "code": "ABI"
+    },
+    {
+        "name": "Adak Island, AK",
+        "code": "ADK"
+    },
+    {
+        "name": "Akiachak, AK",
+        "code": "KKI"
+    },
+    {
+        "name": "Akiak, AK",
+        "code": "AKI"
+    },
+    {
+        "name": "Akron/Canton, OH",
+        "code": "CAK"
+    },
+    {
+        "name": "Akuton, AK",
+        "code": "KQA"
+    },
+    {
+        "name": "Alakanuk, AK",
+        "code": "AUK"
+    },
+    {
+        "name": "Alamogordo, NM",
+        "code": "ALM"
+    },
+    {
+        "name": "Alamosa, CO",
+        "code": "ALS"
+    },
+    {
+        "name": "Albany, NY",
+        "code": "ALB"
+    },
+    {
+        "name": "Albany, OR - Bus service",
+        "code": "CVO"
+    },
+    {
+        "name": "Albany, OR - Bus service",
+        "code": "QWY"
+    },
+    {
+        "name": "Albuquerque, NM",
+        "code": "ABQ"
+    },
+    {
+        "name": "Aleknagik, AK",
+        "code": "WKK"
+    },
+    {
+        "name": "Alexandria, LA",
+        "code": "AEX"
+    },
+    {
+        "name": "Allakaket, AK",
+        "code": "AET"
+    },
+    {
+        "name": "Allentown, PA",
+        "code": "ABE"
+    },
+    {
+        "name": "Alliance, NE",
+        "code": "AIA"
+    },
+    {
+        "name": "Alpena, MI",
+        "code": "APN"
+    },
+    {
+        "name": "Altoona, PA",
+        "code": "AOO"
+    },
+    {
+        "name": "Amarillo, TX",
+        "code": "AMA"
+    },
+    {
+        "name": "Ambler, AK",
+        "code": "ABL"
+    },
+    {
+        "name": "Anaktueuk, AK",
+        "code": "AKP"
+    },
+    {
+        "name": "Anchorage, AK",
+        "code": "ANC"
+    },
+    {
+        "name": "Angoon, AK",
+        "code": "AGN"
+    },
+    {
+        "name": "Aniak, AK",
+        "code": "ANI"
+    },
+    {
+        "name": "Anvik, AK",
+        "code": "ANV"
+    },
+    {
+        "name": "Appleton, WI",
+        "code": "ATW"
+    },
+    {
+        "name": "Arcata, CA",
+        "code": "ACV"
+    },
+    {
+        "name": "Arctic Village, AK",
+        "code": "ARC"
+    },
+    {
+        "name": "Asheville, NC",
+        "code": "AVL"
+    },
+    {
+        "name": "Ashland, KY/Huntington, WV",
+        "code": "HTS"
+    },
+    {
+        "name": "Aspen, CO",
+        "code": "ASE"
+    },
+    {
+        "name": "Athens, GA",
+        "code": "AHN"
+    },
+    {
+        "name": "Atka, AK",
+        "code": "AKB"
+    },
+    {
+        "name": "Atlanta, GA",
+        "code": "ATL"
+    },
+    {
+        "name": "Atlantic City, NJ",
+        "code": "AIY"
+    },
+    {
+        "name": "Atqasuk, AK",
+        "code": "ATK"
+    },
+    {
+        "name": "Augusta, GA",
+        "code": "AGS"
+    },
+    {
+        "name": "Augusta, ME",
+        "code": "AUG"
+    },
+    {
+        "name": "Austin, TX",
+        "code": "AUS"
+    },
+    {
+        "name": "Bakersfield, CA",
+        "code": "BFL"
+    },
+    {
+        "name": "Baltimore, MD",
+        "code": "BWI"
+    },
+    {
+        "name": "Bangor, ME",
+        "code": "BGR"
+    },
+    {
+        "name": "Bar Harbour, ME",
+        "code": "BHB"
+    },
+    {
+        "name": "Barrow, AK",
+        "code": "BRW"
+    },
+    {
+        "name": "Barter Island, AK",
+        "code": "BTI"
+    },
+    {
+        "name": "Baton Rouge, LA",
+        "code": "BTR"
+    },
+    {
+        "name": "Bay City, MI",
+        "code": "MBS"
+    },
+    {
+        "name": "Beaumont/Port Arthur, TX",
+        "code": "BPT"
+    },
+    {
+        "name": "Beaver Creek, CO - Van service",
+        "code": "ZBV"
+    },
+    {
+        "name": "Beaver, AK",
+        "code": "WBQ"
+    },
+    {
+        "name": "Beckley, WV",
+        "code": "BKW"
+    },
+    {
+        "name": "Bedford, MA",
+        "code": "BED"
+    },
+    {
+        "name": "Belleville, IL",
+        "code": "BLV"
+    },
+    {
+        "name": "Bellingham, WA",
+        "code": "BLI"
+    },
+    {
+        "name": "Bemidji, MN",
+        "code": "BJI"
+    },
+    {
+        "name": "Benton Harbor, MI",
+        "code": "BEH"
+    },
+    {
+        "name": "Bethel, AK",
+        "code": "BET"
+    },
+    {
+        "name": "Bethlehem, PA",
+        "code": "ABE"
+    },
+    {
+        "name": "Bettles, AK",
+        "code": "BTT"
+    },
+    {
+        "name": "Billings, MT",
+        "code": "BIL"
+    },
+    {
+        "name": "Biloxi/Gulfport, MS",
+        "code": "GPT"
+    },
+    {
+        "name": "Binghamton, NY",
+        "code": "BGM"
+    },
+    {
+        "name": "Birch Creek, AK",
+        "code": "KBC"
+    },
+    {
+        "name": "Birmingham, AL",
+        "code": "BHM"
+    },
+    {
+        "name": "Bismarck, ND",
+        "code": "BIS"
+    },
+    {
+        "name": "Block Island, RI",
+        "code": "BID"
+    },
+    {
+        "name": "Bloomington, IL",
+        "code": "BMI"
+    },
+    {
+        "name": "Bluefield, WV",
+        "code": "BLF"
+    },
+    {
+        "name": "Boise, ID",
+        "code": "BOI"
+    },
+    {
+        "name": "Boston, MA",
+        "code": "BOS"
+    },
+    {
+        "name": "Boulder, CO - Bus service",
+        "code": "XHH"
+    },
+    {
+        "name": "Boulder, CO - Hiltons Har H",
+        "code": "WHH"
+    },
+    {
+        "name": "Boulder, CO - Municipal Airport",
+        "code": "WBU"
+    },
+    {
+        "name": "Boundary, AK",
+        "code": "BYA"
+    },
+    {
+        "name": "Bowling Green, KY",
+        "code": "BWG"
+    },
+    {
+        "name": "Bozeman, MT",
+        "code": "BZN"
+    },
+    {
+        "name": "Bradford, PA",
+        "code": "BFD"
+    },
+    {
+        "name": "Brainerd, MN",
+        "code": "BRD"
+    },
+    {
+        "name": "Brawnwood, TX",
+        "code": "BWD"
+    },
+    {
+        "name": "Breckonridge, CO - Van service",
+        "code": "QKB"
+    },
+    {
+        "name": "Bristol, VA",
+        "code": "TRI"
+    },
+    {
+        "name": "Brookings, SD",
+        "code": "BKX"
+    },
+    {
+        "name": "Brooks Lodge, AK",
+        "code": "RBH"
+    },
+    {
+        "name": "Brownsville, TX",
+        "code": "BRO"
+    },
+    {
+        "name": "Brunswick, GA",
+        "code": "BQK"
+    },
+    {
+        "name": "Buckland, AK",
+        "code": "BKC"
+    },
+    {
+        "name": "Buffalo, NY",
+        "code": "BUF"
+    },
+    {
+        "name": "Bullhead City/Laughlin, AZ",
+        "code": "IFP"
+    },
+    {
+        "name": "Burbank, CA",
+        "code": "BUR"
+    },
+    {
+        "name": "Burlington, IA",
+        "code": "BRL"
+    },
+    {
+        "name": "Burlington, VT",
+        "code": "BTV"
+    },
+    {
+        "name": "Butte, MT",
+        "code": "BTM"
+    },
+    {
+        "name": "Canton/Akron, OH",
+        "code": "CAK"
+    },
+    {
+        "name": "Cape Girardeau, MO",
+        "code": "CGI"
+    },
+    {
+        "name": "Cape Lisburne, AK",
+        "code": "LUR"
+    },
+    {
+        "name": "Cape Newenham, AK",
+        "code": "EHM"
+    },
+    {
+        "name": "Carbondale, IL",
+        "code": "MDH"
+    },
+    {
+        "name": "Carlsbad, CA",
+        "code": "CLD"
+    },
+    {
+        "name": "Carlsbad, NM",
+        "code": "CNM"
+    },
+    {
+        "name": "Carmel, CA",
+        "code": "MRY"
+    },
+    {
+        "name": "Casper, WY",
+        "code": "CPR"
+    },
+    {
+        "name": "Cedar City, UT",
+        "code": "CDC"
+    },
+    {
+        "name": "Cedar Rapids, IA",
+        "code": "CID"
+    },
+    {
+        "name": "Central, AK",
+        "code": "CEM"
+    },
+    {
+        "name": "Chadron, NE",
+        "code": "CDR"
+    },
+    {
+        "name": "Chalkyitsik, AK",
+        "code": "CIK"
+    },
+    {
+        "name": "Champaign/Urbana, IL",
+        "code": "CMI"
+    },
+    {
+        "name": "Charleston, SC",
+        "code": "CHS"
+    },
+    {
+        "name": "Charleston, WV",
+        "code": "CRW"
+    },
+    {
+        "name": "Charlotte, NC",
+        "code": "CLT"
+    },
+    {
+        "name": "Charlottesville, VA",
+        "code": "CHO"
+    },
+    {
+        "name": "Chattanooga, TN",
+        "code": "CHA"
+    },
+    {
+        "name": "Chefornak, AK",
+        "code": "CYF"
+    },
+    {
+        "name": "Chevak, AK",
+        "code": "VAK"
+    },
+    {
+        "name": "Cheyenne, WY",
+        "code": "CYS"
+    },
+    {
+        "name": "Chicago, IL - Meigs",
+        "code": "CGX"
+    },
+    {
+        "name": "Chicago, IL - Midway",
+        "code": "MDW"
+    },
+    {
+        "name": "Chicago, IL - O'Hare",
+        "code": "ORD"
+    },
+    {
+        "name": "Chicken, AK",
+        "code": "CKX"
+    },
+    {
+        "name": "Chico, CA",
+        "code": "CIC"
+    },
+    {
+        "name": "Chignik, AK - Fisheries",
+        "code": "KCG"
+    },
+    {
+        "name": "Chignik, AK -",
+        "code": "KCQ"
+    },
+    {
+        "name": "Chignik, AK - Lagoon",
+        "code": "KCL"
+    },
+    {
+        "name": "Chisana, AK",
+        "code": "CZN"
+    },
+    {
+        "name": "Chisholm/Hibbing, MN",
+        "code": "HIB"
+    },
+    {
+        "name": "Chuathbaluk, AK",
+        "code": "CHU"
+    },
+    {
+        "name": "Cincinnati, OH",
+        "code": "CVG"
+    },
+    {
+        "name": "Circle Hot Springs, AK",
+        "code": "CHP"
+    },
+    {
+        "name": "Circle, AK",
+        "code": "IRC"
+    },
+    {
+        "name": "Clarks Point, AK",
+        "code": "CLP"
+    },
+    {
+        "name": "Clarksburg, WV",
+        "code": "CKB"
+    },
+    {
+        "name": "Clearwater/St Petersburg, FL",
+        "code": "PIE"
+    },
+    {
+        "name": "Cleveland, OH",
+        "code": "CLE"
+    },
+    {
+        "name": "Clovis, NM",
+        "code": "CVN"
+    },
+    {
+        "name": "Cody/Yellowstone, WY",
+        "code": "COD"
+    },
+    {
+        "name": "Coffee Point, AK",
+        "code": "CFA"
+    },
+    {
+        "name": "Coffman Cove, AK",
+        "code": "KCC"
+    },
+    {
+        "name": "Cold Bay, AK",
+        "code": "CDB"
+    },
+    {
+        "name": "College Station, TX",
+        "code": "CLL"
+    },
+    {
+        "name": "Colorado Springs, CO",
+        "code": "COS"
+    },
+    {
+        "name": "Columbia, MO",
+        "code": "COU"
+    },
+    {
+        "name": "Columbia, SC",
+        "code": "CAE"
+    },
+    {
+        "name": "Columbus, GA",
+        "code": "CSG"
+    },
+    {
+        "name": "Columbus, MS",
+        "code": "GTR"
+    },
+    {
+        "name": "Columbus, OH",
+        "code": "CMH"
+    },
+    {
+        "name": "Concord, CA",
+        "code": "CCR"
+    },
+    {
+        "name": "Concordia, KS",
+        "code": "CNK"
+    },
+    {
+        "name": "Copper Mountain, CO - Van service",
+        "code": "QCE"
+    },
+    {
+        "name": "Cordova, AK",
+        "code": "CDV"
+    },
+    {
+        "name": "Corpus Christi, TX",
+        "code": "CRP"
+    },
+    {
+        "name": "Cortez, CO",
+        "code": "CEZ"
+    },
+    {
+        "name": "Craig, AK",
+        "code": "CGA"
+    },
+    {
+        "name": "Crescent City, CA",
+        "code": "CEC"
+    },
+    {
+        "name": "Crooked Creek, AK",
+        "code": "CKO"
+    },
+    {
+        "name": "Cube Cove, AK",
+        "code": "CUW"
+    },
+    {
+        "name": "Cumberland, MD",
+        "code": "CBE"
+    },
+    {
+        "name": "Dallas/Fort Worth, TX",
+        "code": "DFW"
+    },
+    {
+        "name": "Dayton, OH",
+        "code": "DAY"
+    },
+    {
+        "name": "Daytona Beach, FL",
+        "code": "DAB"
+    },
+    {
+        "name": "Decatur, IL",
+        "code": "DEC"
+    },
+    {
+        "name": "Deering, AK",
+        "code": "DRG"
+    },
+    {
+        "name": "Delta Junction, AK",
+        "code": "DJN"
+    },
+    {
+        "name": "Denver, CO - International",
+        "code": "DEN"
+    },
+    {
+        "name": "Denver, CO - Longmont Bus service",
+        "code": "QWM"
+    },
+    {
+        "name": "Des Moines, IA",
+        "code": "DSM"
+    },
+    {
+        "name": "Detroit, MI - Metro/Wayne County",
+        "code": "DTW"
+    },
+    {
+        "name": "Devil's Lake, ND",
+        "code": "DVL"
+    },
+    {
+        "name": "Dickinson, ND",
+        "code": "DIK"
+    },
+    {
+        "name": "Dillingham, AK",
+        "code": "DLG"
+    },
+    {
+        "name": "Dodge City, KS",
+        "code": "DDC"
+    },
+    {
+        "name": "Dothan, AL",
+        "code": "DHN"
+    },
+    {
+        "name": "Dubois, PA",
+        "code": "DUJ"
+    },
+    {
+        "name": "Dubuque, IA",
+        "code": "DBQ"
+    },
+    {
+        "name": "Duluth, MN",
+        "code": "DLH"
+    },
+    {
+        "name": "Durango, CO",
+        "code": "DRO"
+    },
+    {
+        "name": "Durham, NC",
+        "code": "RDU"
+    },
+    {
+        "name": "Durham/Raleigh, NC",
+        "code": "RDU"
+    },
+    {
+        "name": "Dutch Harbor, AK",
+        "code": "DUT"
+    },
+    {
+        "name": "Easton, PA",
+        "code": "ABE"
+    },
+    {
+        "name": "Eau Claire, WI",
+        "code": "EAU"
+    },
+    {
+        "name": "Edna Bay, AK",
+        "code": "EDA"
+    },
+    {
+        "name": "Eek, AK",
+        "code": "EEK"
+    },
+    {
+        "name": "Ekuk, AK",
+        "code": "KKU"
+    },
+    {
+        "name": "Ekwok, AK",
+        "code": "KEK"
+    },
+    {
+        "name": "El Centro, CA",
+        "code": "IPL"
+    },
+    {
+        "name": "El Dorado, AR",
+        "code": "ELD"
+    },
+    {
+        "name": "El Paso, TX",
+        "code": "ELP"
+    },
+    {
+        "name": "Elfin Cove, AK",
+        "code": "ELV"
+    },
+    {
+        "name": "Elim, AK",
+        "code": "ELI"
+    },
+    {
+        "name": "Elko, NV",
+        "code": "EKO"
+    },
+    {
+        "name": "Elmira, NY",
+        "code": "ELM"
+    },
+    {
+        "name": "Ely, MN",
+        "code": "LYU"
+    },
+    {
+        "name": "Emmonak, AK",
+        "code": "EMK"
+    },
+    {
+        "name": "Endicott, NY",
+        "code": "BGM"
+    },
+    {
+        "name": "Enid, OK",
+        "code": "WDG"
+    },
+    {
+        "name": "Erie, PA",
+        "code": "ERI"
+    },
+    {
+        "name": "Escanaba, MI",
+        "code": "ESC"
+    },
+    {
+        "name": "Eugene, OR",
+        "code": "EUG"
+    },
+    {
+        "name": "Eureka/Arcata, CA",
+        "code": "ACV"
+    },
+    {
+        "name": "Eureka, NV",
+        "code": "EUE"
+    },
+    {
+        "name": "Evansville, IN",
+        "code": "EVV"
+    },
+    {
+        "name": "Fairbanks, AK",
+        "code": "FAI"
+    },
+    {
+        "name": "Fargo, ND",
+        "code": "FAR"
+    },
+    {
+        "name": "Fayetteville, AR - Municipal/Drake",
+        "code": "FYV"
+    },
+    {
+        "name": "Fayetteville, AR - Northwest Arkansas Regional",
+        "code": "XNA"
+    },
+    {
+        "name": "Fayetteville, NC",
+        "code": "FAY"
+    },
+    {
+        "name": "Flagstaff, AZ",
+        "code": "FLG"
+    },
+    {
+        "name": "Flint, MI",
+        "code": "FNT"
+    },
+    {
+        "name": "Florence, SC",
+        "code": "FLO"
+    },
+    {
+        "name": "Florence/Muscle Shoals/Sheffield, AL",
+        "code": "MSL"
+    },
+    {
+        "name": "Fort Collins/Loveland, CO - Municipal Airport",
+        "code": "FNL"
+    },
+    {
+        "name": "Fort Collins/Loveland, CO - Bus service",
+        "code": "QWF"
+    },
+    {
+        "name": "Fort Dodge, IA",
+        "code": "FOD"
+    },
+    {
+        "name": "Fort Lauderdale, FL",
+        "code": "FLL"
+    },
+    {
+        "name": "Fort Leonard Wood, MO",
+        "code": "TBN"
+    },
+    {
+        "name": "Fort Myers, FL",
+        "code": "RSW"
+    },
+    {
+        "name": "Fort Smith, AR",
+        "code": "FSM"
+    },
+    {
+        "name": "Fort Walton Beach, FL",
+        "code": "VPS"
+    },
+    {
+        "name": "Fort Wayne, IN",
+        "code": "FWA"
+    },
+    {
+        "name": "Fort Worth/Dallas, TX",
+        "code": "DFW"
+    },
+    {
+        "name": "Franklin, PA",
+        "code": "FKL"
+    },
+    {
+        "name": "Fresno, CA",
+        "code": "FAT"
+    },
+    {
+        "name": "Gainesville, FL",
+        "code": "GNV"
+    },
+    {
+        "name": "Gallup, NM",
+        "code": "GUP"
+    },
+    {
+        "name": "Garden City, KS",
+        "code": "GCK"
+    },
+    {
+        "name": "Gary, IN",
+        "code": "GYY"
+    },
+    {
+        "name": "Gillette, WY",
+        "code": "GCC"
+    },
+    {
+        "name": "Gladewater/Kilgore, TX",
+        "code": "GGG"
+    },
+    {
+        "name": "Glasgow, MT",
+        "code": "GGW"
+    },
+    {
+        "name": "Glendive, MT",
+        "code": "GDV"
+    },
+    {
+        "name": "Golovin, AK",
+        "code": "GLV"
+    },
+    {
+        "name": "Goodnews Bay, AK",
+        "code": "GNU"
+    },
+    {
+        "name": "Grand Canyon, AZ - Heliport",
+        "code": "JGC"
+    },
+    {
+        "name": "Grand Canyon, AZ - National Park",
+        "code": "GCN"
+    },
+    {
+        "name": "Grand Forks, ND",
+        "code": "GFK"
+    },
+    {
+        "name": "Grand Island, NE",
+        "code": "GRI"
+    },
+    {
+        "name": "Grand Junction, CO",
+        "code": "GJT"
+    },
+    {
+        "name": "Grand Rapids, MI",
+        "code": "GRR"
+    },
+    {
+        "name": "Grand Rapids, MN",
+        "code": "GPZ"
+    },
+    {
+        "name": "Grayling, AK",
+        "code": "KGX"
+    },
+    {
+        "name": "Great Falls, MT",
+        "code": "GTF"
+    },
+    {
+        "name": "Green Bay, WI",
+        "code": "GRB"
+    },
+    {
+        "name": "Greensboro, NC",
+        "code": "GSO"
+    },
+    {
+        "name": "Greenville, MS",
+        "code": "GLH"
+    },
+    {
+        "name": "Greenville, NC",
+        "code": "PGV"
+    },
+    {
+        "name": "Greenville/Spartanburg, SC",
+        "code": "GSP"
+    },
+    {
+        "name": "Groton/New London, CT",
+        "code": "GON"
+    },
+    {
+        "name": "Gulfport, MS",
+        "code": "GPT"
+    },
+    {
+        "name": "Gunnison, CO",
+        "code": "GUC"
+    },
+    {
+        "name": "Gustavus, AK",
+        "code": "GST"
+    },
+    {
+        "name": "Hagerstown, MD",
+        "code": "HGR"
+    },
+    {
+        "name": "Hailey, ID",
+        "code": "SUN"
+    },
+    {
+        "name": "Haines, AK",
+        "code": "HNS"
+    },
+    {
+        "name": "Hampton, VA",
+        "code": "PHF"
+    },
+    {
+        "name": "Hana, HI - Island of Maui",
+        "code": "HNM"
+    },
+    {
+        "name": "Hanapepe, HI",
+        "code": "PAK"
+    },
+    {
+        "name": "Hancock, MI",
+        "code": "CMX"
+    },
+    {
+        "name": "Hanover, NH",
+        "code": "LEB"
+    },
+    {
+        "name": "Harlingen, TX",
+        "code": "HRL"
+    },
+    {
+        "name": "Harrisburg, PA",
+        "code": "MDT"
+    },
+    {
+        "name": "Harrison, AR",
+        "code": "HRO"
+    },
+    {
+        "name": "Hartford, CT",
+        "code": "BDL"
+    },
+    {
+        "name": "Havasupai, AZ",
+        "code": "HAE"
+    },
+    {
+        "name": "Havre, MT",
+        "code": "HVR"
+    },
+    {
+        "name": "Hayden, CO",
+        "code": "HDN"
+    },
+    {
+        "name": "Hays, KS",
+        "code": "HYS"
+    },
+    {
+        "name": "Healy Lake, AK",
+        "code": "HKB"
+    },
+    {
+        "name": "Helena, MT",
+        "code": "HLN"
+    },
+    {
+        "name": "Hendersonville, NC",
+        "code": "AVL"
+    },
+    {
+        "name": "Hibbing/Chisholm, MN",
+        "code": "HIB"
+    },
+    {
+        "name": "Hickory, NC",
+        "code": "HKY"
+    },
+    {
+        "name": "High Point, NC",
+        "code": "GSO"
+    },
+    {
+        "name": "Hilo, HI - Island of Hawaii",
+        "code": "ITO"
+    },
+    {
+        "name": "Hilton Head, SC",
+        "code": "HHH"
+    },
+    {
+        "name": "Hobbs, NM",
+        "code": "HBB"
+    },
+    {
+        "name": "Hollis, AK",
+        "code": "HYL"
+    },
+    {
+        "name": "Holy Cross, AK",
+        "code": "HCR"
+    },
+    {
+        "name": "Homer, AK",
+        "code": "HOM"
+    },
+    {
+        "name": "Honolulu, HI - Island of Oahu",
+        "code": "HNL"
+    },
+    {
+        "name": "Hoolehua, HI - Island of Molokai",
+        "code": "MKK"
+    },
+    {
+        "name": "Hoonah, AK",
+        "code": "HNH"
+    },
+    {
+        "name": "Hooper Bay, AK",
+        "code": "HPB"
+    },
+    {
+        "name": "Hot Springs, AR",
+        "code": "HOT"
+    },
+    {
+        "name": "Houston, TX - Hobby",
+        "code": "HOU"
+    },
+    {
+        "name": "Houston, TX - Intercontinental",
+        "code": "IAH"
+    },
+    {
+        "name": "Hughes, AK",
+        "code": "HUS"
+    },
+    {
+        "name": "Huntington, WV/Ashland, KY",
+        "code": "HTS"
+    },
+    {
+        "name": "Huntsville, AL",
+        "code": "HSV"
+    },
+    {
+        "name": "Huron, SD",
+        "code": "HON"
+    },
+    {
+        "name": "Huslia, AK",
+        "code": "HSL"
+    },
+    {
+        "name": "Hyannis, MA",
+        "code": "HYA"
+    },
+    {
+        "name": "Hydaburg, AK",
+        "code": "HYG"
+    },
+    {
+        "name": "Idaho Falls, ID",
+        "code": "IDA"
+    },
+    {
+        "name": "Igiugig, AK",
+        "code": "IGG"
+    },
+    {
+        "name": "Iliamna, AK",
+        "code": "ILI"
+    },
+    {
+        "name": "Imperial, CA",
+        "code": "IPL"
+    },
+    {
+        "name": "Indianapolis, IN",
+        "code": "IND"
+    },
+    {
+        "name": "International Falls, MN",
+        "code": "INL"
+    },
+    {
+        "name": "Inyokern, CA",
+        "code": "IYK"
+    },
+    {
+        "name": "Iron Mountain, MI",
+        "code": "IMT"
+    },
+    {
+        "name": "Ironwood, MI",
+        "code": "IWD"
+    },
+    {
+        "name": "Islip, NY",
+        "code": "ISP"
+    },
+    {
+        "name": "Ithaca, NY",
+        "code": "ITH"
+    },
+    {
+        "name": "Jackson Hole, WY",
+        "code": "JAC"
+    },
+    {
+        "name": "Jackson, MS",
+        "code": "JAN"
+    },
+    {
+        "name": "Jackson, TN",
+        "code": "MKL"
+    },
+    {
+        "name": "Jacksonville, FL",
+        "code": "JAX"
+    },
+    {
+        "name": "Jacksonville, NC",
+        "code": "OAJ"
+    },
+    {
+        "name": "Jamestown, ND",
+        "code": "JMS"
+    },
+    {
+        "name": "Jamestown, NY",
+        "code": "JHW"
+    },
+    {
+        "name": "Janesville, WI",
+        "code": "JVL"
+    },
+    {
+        "name": "Johnson City, NY",
+        "code": "BGM"
+    },
+    {
+        "name": "Johnson City, TN",
+        "code": "TRI"
+    },
+    {
+        "name": "Johnstown, PA",
+        "code": "JST"
+    },
+    {
+        "name": "Jonesboro, AR",
+        "code": "JBR"
+    },
+    {
+        "name": "Joplin, MO",
+        "code": "JLN"
+    },
+    {
+        "name": "Juneau, AK",
+        "code": "JNU"
+    },
+    {
+        "name": "Kahului, HI - Island of Maui,",
+        "code": "OGG"
+    },
+    {
+        "name": "Kake, AK",
+        "code": "KAE"
+    },
+    {
+        "name": "Kakhonak, AK",
+        "code": "KNK"
+    },
+    {
+        "name": "Kalamazoo, MI",
+        "code": "AZO"
+    },
+    {
+        "name": "Kalaupapa, HI - Island of Molokai,",
+        "code": "LUP"
+    },
+    {
+        "name": "Kalskag, AK",
+        "code": "KLG"
+    },
+    {
+        "name": "Kaltag, AK",
+        "code": "KAL"
+    },
+    {
+        "name": "Kamuela, HI - Island of Hawaii,",
+        "code": "MUE"
+    },
+    {
+        "name": "Kansas City, MO",
+        "code": "MCI"
+    },
+    {
+        "name": "Kapalua, HI - Island of Maui,",
+        "code": "JHM"
+    },
+    {
+        "name": "Kasaan, AK",
+        "code": "KXA"
+    },
+    {
+        "name": "Kasigluk, AK",
+        "code": "KUK"
+    },
+    {
+        "name": "Kauai Island/Lihue, HI",
+        "code": "LIH"
+    },
+    {
+        "name": "Kearney, NE",
+        "code": "EAR"
+    },
+    {
+        "name": "Keene, NH",
+        "code": "EEN"
+    },
+    {
+        "name": "Kenai, AK",
+        "code": "ENA"
+    },
+    {
+        "name": "Ketchikan, AK",
+        "code": "KTN"
+    },
+    {
+        "name": "Key West, FL",
+        "code": "EYW"
+    },
+    {
+        "name": "Keystone, CO - Van service",
+        "code": "QKS"
+    },
+    {
+        "name": "Kiana, AK",
+        "code": "IAN"
+    },
+    {
+        "name": "Kilgore/Gladewater, TX",
+        "code": "GGG"
+    },
+    {
+        "name": "Killeen, TX",
+        "code": "ILE"
+    },
+    {
+        "name": "King Cove, AK",
+        "code": "KVC"
+    },
+    {
+        "name": "King Salmon, AK",
+        "code": "AKN"
+    },
+    {
+        "name": "Kingman, AZ",
+        "code": "IGM"
+    },
+    {
+        "name": "Kingsport, TN",
+        "code": "TRI"
+    },
+    {
+        "name": "Kipnuk, AK",
+        "code": "KPN"
+    },
+    {
+        "name": "Kirksville, MO",
+        "code": "IRK"
+    },
+    {
+        "name": "Kivalina, AK",
+        "code": "KVL"
+    },
+    {
+        "name": "Klamath Falls, OR",
+        "code": "LMT"
+    },
+    {
+        "name": "Klawock, AK",
+        "code": "KLW"
+    },
+    {
+        "name": "Knoxville, TN",
+        "code": "TYS"
+    },
+    {
+        "name": "Kobuk, AK",
+        "code": "OBU"
+    },
+    {
+        "name": "Kodiak, AK",
+        "code": "ADQ"
+    },
+    {
+        "name": "Kona, HI - Island of Hawaii",
+        "code": "KOA"
+    },
+    {
+        "name": "Kongiganak, AK",
+        "code": "KKH"
+    },
+    {
+        "name": "Kotlik, AK",
+        "code": "KOT"
+    },
+    {
+        "name": "Kotzebue, AK",
+        "code": "OTZ"
+    },
+    {
+        "name": "Koyukuk, AK",
+        "code": "KYU"
+    },
+    {
+        "name": "Kwethluk, AK",
+        "code": "KWT"
+    },
+    {
+        "name": "Kwigillingok, AK",
+        "code": "KWK"
+    },
+    {
+        "name": "La Crosse, WI",
+        "code": "LSE"
+    },
+    {
+        "name": "Lafayette, IN",
+        "code": "LAF"
+    },
+    {
+        "name": "Lafayette, LA",
+        "code": "LFT"
+    },
+    {
+        "name": "Lake Charles, LA",
+        "code": "LCH"
+    },
+    {
+        "name": "Lake Havasu City, AZ",
+        "code": "HII"
+    },
+    {
+        "name": "Lake Minchumina, AK",
+        "code": "LMA"
+    },
+    {
+        "name": "Lanai City, HI - Island of Lanai",
+        "code": "LNY"
+    },
+    {
+        "name": "Lancaster, PA",
+        "code": "LNS"
+    },
+    {
+        "name": "Lansing, MI",
+        "code": "LAN"
+    },
+    {
+        "name": "Laramie, WY",
+        "code": "LAR"
+    },
+    {
+        "name": "Laredo, TX",
+        "code": "LRD"
+    },
+    {
+        "name": "Las Vegas, NV",
+        "code": "LAS"
+    },
+    {
+        "name": "Latrobe, PA",
+        "code": "LBE"
+    },
+    {
+        "name": "Laurel, MS",
+        "code": "PIB"
+    },
+    {
+        "name": "Lawton, OK",
+        "code": "LAW"
+    },
+    {
+        "name": "Lebanon, NH",
+        "code": "LEB"
+    },
+    {
+        "name": "Levelock, AK",
+        "code": "KLL"
+    },
+    {
+        "name": "Lewisburg, WV",
+        "code": "LWB"
+    },
+    {
+        "name": "Lewiston, ID",
+        "code": "LWS"
+    },
+    {
+        "name": "Lewistown, MT",
+        "code": "LWT"
+    },
+    {
+        "name": "Lexington, KY",
+        "code": "LEX"
+    },
+    {
+        "name": "Liberal, KS",
+        "code": "LBL"
+    },
+    {
+        "name": "Lihue, HI - Island of Kaui",
+        "code": "LIH"
+    },
+    {
+        "name": "Lincoln, NE",
+        "code": "LNK"
+    },
+    {
+        "name": "Little Rock, AR",
+        "code": "LIT"
+    },
+    {
+        "name": "Long Beach, CA",
+        "code": "LGB"
+    },
+    {
+        "name": "Longview, TX",
+        "code": "GGG"
+    },
+    {
+        "name": "Lopez Island, WA",
+        "code": "LPS"
+    },
+    {
+        "name": "Los Angeles, CA",
+        "code": "LAX"
+    },
+    {
+        "name": "Louisville, KY",
+        "code": "SDF"
+    },
+    {
+        "name": "Loveland/Fort Collins, CO - Municipal Airport",
+        "code": "FNL"
+    },
+    {
+        "name": "Loveland/Fort Collins, CO - Bus service",
+        "code": "QWF"
+    },
+    {
+        "name": "Lubbock, TX",
+        "code": "LBB"
+    },
+    {
+        "name": "Macon, GA",
+        "code": "MCN"
+    },
+    {
+        "name": "Madison, WI",
+        "code": "MSN"
+    },
+    {
+        "name": "Madras, OR",
+        "code": "MDJ"
+    },
+    {
+        "name": "Manchester, NH",
+        "code": "MHT"
+    },
+    {
+        "name": "Manhattan, KS",
+        "code": "MHK"
+    },
+    {
+        "name": "Manistee, MI",
+        "code": "MBL"
+    },
+    {
+        "name": "Mankato, MN",
+        "code": "MKT"
+    },
+    {
+        "name": "Manley Hot Springs, AK",
+        "code": "MLY"
+    },
+    {
+        "name": "Manokotak, AK",
+        "code": "KMO"
+    },
+    {
+        "name": "Marietta, OH/Parkersburg, WV",
+        "code": "PKB"
+    },
+    {
+        "name": "Marion, IL",
+        "code": "MWA"
+    },
+    {
+        "name": "Marquette, MI",
+        "code": "MQT"
+    },
+    {
+        "name": "Marshall, AK",
+        "code": "MLL"
+    },
+    {
+        "name": "Martha's Vineyard, MA",
+        "code": "MVY"
+    },
+    {
+        "name": "Martinsburg, PA",
+        "code": "AOO"
+    },
+    {
+        "name": "Mason City, IA",
+        "code": "MCW"
+    },
+    {
+        "name": "Massena, NY",
+        "code": "MSS"
+    },
+    {
+        "name": "Maui, HI",
+        "code": "OGG"
+    },
+    {
+        "name": "Mcallen, TX",
+        "code": "MFE"
+    },
+    {
+        "name": "Mccook, NE",
+        "code": "MCK"
+    },
+    {
+        "name": "Mcgrath, AK",
+        "code": "MCG"
+    },
+    {
+        "name": "Medford, OR",
+        "code": "MFR"
+    },
+    {
+        "name": "Mekoryuk, AK",
+        "code": "MYU"
+    },
+    {
+        "name": "Melbourne, FL",
+        "code": "MLB"
+    },
+    {
+        "name": "Memphis, TN",
+        "code": "MEM"
+    },
+    {
+        "name": "Merced, CA",
+        "code": "MCE"
+    },
+    {
+        "name": "Meridian, MS",
+        "code": "MEI"
+    },
+    {
+        "name": "Metlakatla, AK",
+        "code": "MTM"
+    },
+    {
+        "name": "Meyers Chuck, AK",
+        "code": "WMK"
+    },
+    {
+        "name": "Miami, FL - International",
+        "code": "MIA"
+    },
+    {
+        "name": "Miami, FL - Sea Plane Base",
+        "code": "MPB"
+    },
+    {
+        "name": "Midland, MI",
+        "code": "MBS"
+    },
+    {
+        "name": "Midland/Odessa, TX",
+        "code": "MAF"
+    },
+    {
+        "name": "Miles City, MT",
+        "code": "MLS"
+    },
+    {
+        "name": "Milwaukee, WI",
+        "code": "MKE"
+    },
+    {
+        "name": "Minneapolis, MN",
+        "code": "MSP"
+    },
+    {
+        "name": "Minot, ND",
+        "code": "MOT"
+    },
+    {
+        "name": "Minto, AK",
+        "code": "MNT"
+    },
+    {
+        "name": "Mission, TX",
+        "code": "MFE"
+    },
+    {
+        "name": "Missoula, MT",
+        "code": "MSO"
+    },
+    {
+        "name": "Moab, UT",
+        "code": "CNY"
+    },
+    {
+        "name": "Mobile, AL",
+        "code": "MOB"
+    },
+    {
+        "name": "Modesto, CA",
+        "code": "MOD"
+    },
+    {
+        "name": "Moline, IL",
+        "code": "MLI"
+    },
+    {
+        "name": "Monroe, LA",
+        "code": "MLU"
+    },
+    {
+        "name": "Monterey, CA",
+        "code": "MRY"
+    },
+    {
+        "name": "Montgomery, AL",
+        "code": "MGM"
+    },
+    {
+        "name": "Montrose, CO",
+        "code": "MTJ"
+    },
+    {
+        "name": "Morgantown, WV",
+        "code": "MGW"
+    },
+    {
+        "name": "Moses Lake, WA",
+        "code": "MWH"
+    },
+    {
+        "name": "Mountain Home, AR",
+        "code": "WMH"
+    },
+    {
+        "name": "Mountain Village, AK",
+        "code": "MOU"
+    },
+    {
+        "name": "Muscle Shoals, AL",
+        "code": "MSL"
+    },
+    {
+        "name": "Muskegon, MI",
+        "code": "MKG"
+    },
+    {
+        "name": "Myrtle Beach, SC",
+        "code": "MYR"
+    },
+    {
+        "name": "Nantucket, MA",
+        "code": "ACK"
+    },
+    {
+        "name": "Napakiak, AK",
+        "code": "WNA"
+    },
+    {
+        "name": "Napaskiak, AK",
+        "code": "PKA"
+    },
+    {
+        "name": "Naples, FL",
+        "code": "APF"
+    },
+    {
+        "name": "Nashville, TN",
+        "code": "BNA"
+    },
+    {
+        "name": "Naukiti, AK",
+        "code": "NKI"
+    },
+    {
+        "name": "Nelson Lagoon, AK",
+        "code": "NLG"
+    },
+    {
+        "name": "New Chenega, AK",
+        "code": "NCN"
+    },
+    {
+        "name": "New Haven, CT",
+        "code": "HVN"
+    },
+    {
+        "name": "New Koliganek, AK",
+        "code": "KGK"
+    },
+    {
+        "name": "New London/Groton",
+        "code": "GON"
+    },
+    {
+        "name": "New Orleans, LA",
+        "code": "MSY"
+    },
+    {
+        "name": "New Stuyahok, AK",
+        "code": "KNW"
+    },
+    {
+        "name": "New York, NY - Kennedy",
+        "code": "JFK"
+    },
+    {
+        "name": "New York, NY - La Guardia",
+        "code": "LGA"
+    },
+    {
+        "name": "Newark, NJ",
+        "code": "EWR"
+    },
+    {
+        "name": "Newburgh/Stewart Field, NY",
+        "code": "SWF"
+    },
+    {
+        "name": "Newport News, VA",
+        "code": "PHF"
+    },
+    {
+        "name": "Newtok, AK",
+        "code": "WWT"
+    },
+    {
+        "name": "Nightmute, AK",
+        "code": "NME"
+    },
+    {
+        "name": "Nikolai, AK",
+        "code": "NIB"
+    },
+    {
+        "name": "Nikolski, AK",
+        "code": "IKO"
+    },
+    {
+        "name": "Noatak, AK",
+        "code": "WTK"
+    },
+    {
+        "name": "Nome, AK",
+        "code": "OME"
+    },
+    {
+        "name": "Nondalton, AK",
+        "code": "NNL"
+    },
+    {
+        "name": "Noorvik, AK",
+        "code": "ORV"
+    },
+    {
+        "name": "Norfolk, NE",
+        "code": "OFK"
+    },
+    {
+        "name": "Norfolk, VA",
+        "code": "ORF"
+    },
+    {
+        "name": "North Bend, OR",
+        "code": "OTH"
+    },
+    {
+        "name": "North Platte, NE",
+        "code": "LBF"
+    },
+    {
+        "name": "Northway, AK",
+        "code": "ORT"
+    },
+    {
+        "name": "Nuiqsut, AK",
+        "code": "NUI"
+    },
+    {
+        "name": "Nulato, AK",
+        "code": "NUL"
+    },
+    {
+        "name": "Nunapitchuk, AK",
+        "code": "NUP"
+    },
+    {
+        "name": "Oakland, CA",
+        "code": "OAK"
+    },
+    {
+        "name": "Odessa/Midland, TX",
+        "code": "MAF"
+    },
+    {
+        "name": "Ogdensburg, NY",
+        "code": "OGS"
+    },
+    {
+        "name": "Oklahoma City, OK",
+        "code": "OKC"
+    },
+    {
+        "name": "Omaha, NE",
+        "code": "OMA"
+    },
+    {
+        "name": "Ontario, CA",
+        "code": "ONT"
+    },
+    {
+        "name": "Orange County, CA",
+        "code": "SNA"
+    },
+    {
+        "name": "Orlando, FL - Herndon",
+        "code": "ORL"
+    },
+    {
+        "name": "Orlando, FL - International",
+        "code": "MCO"
+    },
+    {
+        "name": "Oshkosh, WI",
+        "code": "OSH"
+    },
+    {
+        "name": "Ottumwa, IA",
+        "code": "OTM"
+    },
+    {
+        "name": "Owensboro, KY",
+        "code": "OWB"
+    },
+    {
+        "name": "Oxnard/Ventura, CA",
+        "code": "OXR"
+    },
+    {
+        "name": "Paducah, KY",
+        "code": "PAH"
+    },
+    {
+        "name": "Page, AZ",
+        "code": "PGA"
+    },
+    {
+        "name": "Palm Springs, CA",
+        "code": "PSP"
+    },
+    {
+        "name": "Panama City, FL",
+        "code": "PFN"
+    },
+    {
+        "name": "Parkersburg, WV/Marietta, OH",
+        "code": "PKB"
+    },
+    {
+        "name": "Pasco, WA",
+        "code": "PSC"
+    },
+    {
+        "name": "Pedro Bay, AK",
+        "code": "PDB"
+    },
+    {
+        "name": "Pelican, AK",
+        "code": "PEC"
+    },
+    {
+        "name": "Pellston, MI",
+        "code": "PLN"
+    },
+    {
+        "name": "Pendleton, OR",
+        "code": "PDT"
+    },
+    {
+        "name": "Pensacola, FL",
+        "code": "PNS"
+    },
+    {
+        "name": "Peoria, IL",
+        "code": "PIA"
+    },
+    {
+        "name": "Perryville, AK",
+        "code": "KPV"
+    },
+    {
+        "name": "Petersburg, AK",
+        "code": "PSG"
+    },
+    {
+        "name": "Philadelphia, PA - International",
+        "code": "PHL"
+    },
+    {
+        "name": "Philadelphia, PA - Trenton/Mercer NJ",
+        "code": "TTN"
+    },
+    {
+        "name": "Phoenix, AZ",
+        "code": "PHX"
+    },
+    {
+        "name": "Pierre, SD",
+        "code": "PIR"
+    },
+    {
+        "name": "Pilot Point, AK - Ugashnik Bay",
+        "code": "UGB"
+    },
+    {
+        "name": "Pilot Point, AK",
+        "code": "PIP"
+    },
+    {
+        "name": "Pilot Station, AK",
+        "code": "PQS"
+    },
+    {
+        "name": "Pittsburgh, PA",
+        "code": "PIT"
+    },
+    {
+        "name": "Platinum, AK",
+        "code": "PTU"
+    },
+    {
+        "name": "Plattsburgh, NY",
+        "code": "PLB"
+    },
+    {
+        "name": "Pocatello, ID",
+        "code": "PIH"
+    },
+    {
+        "name": "Point Baker, AK",
+        "code": "KPB"
+    },
+    {
+        "name": "Point Hope, AK",
+        "code": "PHO"
+    },
+    {
+        "name": "Point Lay, AK",
+        "code": "PIZ"
+    },
+    {
+        "name": "Ponca City, OK",
+        "code": "PNC"
+    },
+    {
+        "name": "Ponce, Puerto Rico",
+        "code": "PSE"
+    },
+    {
+        "name": "Port Alsworth, AK",
+        "code": "PTA"
+    },
+    {
+        "name": "Port Angeles, WA",
+        "code": "CLM"
+    },
+    {
+        "name": "Port Arthur/Beaumont, TX",
+        "code": "BPT"
+    },
+    {
+        "name": "Port Clarence, AK",
+        "code": "KPC"
+    },
+    {
+        "name": "Port Heiden, AK",
+        "code": "PTH"
+    },
+    {
+        "name": "Port Moller, AK",
+        "code": "PML"
+    },
+    {
+        "name": "Port Protection, AK",
+        "code": "PPV"
+    },
+    {
+        "name": "Portage Creek, AK",
+        "code": "PCA"
+    },
+    {
+        "name": "Portland, ME",
+        "code": "PWM"
+    },
+    {
+        "name": "Portland, OR",
+        "code": "PDX"
+    },
+    {
+        "name": "Portsmouth, NH",
+        "code": "PSM"
+    },
+    {
+        "name": "Poughkeepsie, NY",
+        "code": "POU"
+    },
+    {
+        "name": "Prescott, AZ",
+        "code": "PRC"
+    },
+    {
+        "name": "Presque Isle, ME",
+        "code": "PQI"
+    },
+    {
+        "name": "Princeton, WV",
+        "code": "BLF"
+    },
+    {
+        "name": "Providence, RI",
+        "code": "PVD"
+    },
+    {
+        "name": "Provincetown, MA",
+        "code": "PVC"
+    },
+    {
+        "name": "Prudhoe Bay/Deadhorse, AK",
+        "code": "SCC"
+    },
+    {
+        "name": "Pueblo, CO",
+        "code": "PUB"
+    },
+    {
+        "name": "Pullman, WA",
+        "code": "PUW"
+    },
+    {
+        "name": "Quincy, IL",
+        "code": "UIN"
+    },
+    {
+        "name": "Quinhagak, AK",
+        "code": "KWN"
+    },
+    {
+        "name": "Raleigh/Durham, NC",
+        "code": "RDU"
+    },
+    {
+        "name": "Rampart, AK",
+        "code": "RMP"
+    },
+    {
+        "name": "Rapid City, SD",
+        "code": "RAP"
+    },
+    {
+        "name": "Reading, PA",
+        "code": "RDG"
+    },
+    {
+        "name": "Red Devil, AK",
+        "code": "RDV"
+    },
+    {
+        "name": "Redding, CA",
+        "code": "RDD"
+    },
+    {
+        "name": "Redmond, OR",
+        "code": "RDM"
+    },
+    {
+        "name": "Reno, NV",
+        "code": "RNO"
+    },
+    {
+        "name": "Rhinelander, WI,",
+        "code": "RHI"
+    },
+    {
+        "name": "Richmond, VA",
+        "code": "RIC"
+    },
+    {
+        "name": "Riverton, WY",
+        "code": "RIW"
+    },
+    {
+        "name": "Roanoke, VA",
+        "code": "ROA"
+    },
+    {
+        "name": "Roche Harbor, WA",
+        "code": "RCE"
+    },
+    {
+        "name": "Rochester, MN",
+        "code": "RST"
+    },
+    {
+        "name": "Rochester, NY",
+        "code": "ROC"
+    },
+    {
+        "name": "Rock Springs, WY",
+        "code": "RKS"
+    },
+    {
+        "name": "Rockford, IL - Park&Ride Bus",
+        "code": "ZRF"
+    },
+    {
+        "name": "Rockford, IL - Van Galder Bus",
+        "code": "ZRK"
+    },
+    {
+        "name": "Rockland, ME",
+        "code": "RKD"
+    },
+    {
+        "name": "Rosario, WA",
+        "code": "RSJ"
+    },
+    {
+        "name": "Roswell, NM",
+        "code": "ROW"
+    },
+    {
+        "name": "Ruby, AK",
+        "code": "RBY"
+    },
+    {
+        "name": "Russian Mission, AK",
+        "code": "RSH"
+    },
+    {
+        "name": "Rutland, VT",
+        "code": "RUT"
+    },
+    {
+        "name": "Sacramento, CA",
+        "code": "SMF"
+    },
+    {
+        "name": "Saginaw, MI",
+        "code": "MBS"
+    },
+    {
+        "name": "Saint Cloud, MN",
+        "code": "STC"
+    },
+    {
+        "name": "Saint George Island, AK",
+        "code": "STG"
+    },
+    {
+        "name": "Saint George, UT",
+        "code": "SGU"
+    },
+    {
+        "name": "Saint Louis, MO",
+        "code": "STL"
+    },
+    {
+        "name": "Saint Mary's, AK",
+        "code": "KSM"
+    },
+    {
+        "name": "Saint Michael, AK",
+        "code": "SMK"
+    },
+    {
+        "name": "Saint Paul Island, AK",
+        "code": "SNP"
+    },
+    {
+        "name": "Salem, OR",
+        "code": "SLE"
+    },
+    {
+        "name": "Salina, KS",
+        "code": "SLN"
+    },
+    {
+        "name": "Salisbury-Ocean City, MD",
+        "code": "SBY"
+    },
+    {
+        "name": "Salt Lake City, UT",
+        "code": "SLC"
+    },
+    {
+        "name": "San Angelo, TX",
+        "code": "SJT"
+    },
+    {
+        "name": "San Antonio, TX",
+        "code": "SAT"
+    },
+    {
+        "name": "San Diego, CA",
+        "code": "SAN"
+    },
+    {
+        "name": "San Francisco, CA",
+        "code": "SFO"
+    },
+    {
+        "name": "San Jose, CA",
+        "code": "SJC"
+    },
+    {
+        "name": "San Juan, Puerto Rico",
+        "code": "SJU"
+    },
+    {
+        "name": "San Luis Obispo, CA",
+        "code": "SBP"
+    },
+    {
+        "name": "Sand Point, AK",
+        "code": "SDP"
+    },
+    {
+        "name": "Santa Ana, CA",
+        "code": "SNA"
+    },
+    {
+        "name": "Santa Barbara, CA",
+        "code": "SBA"
+    },
+    {
+        "name": "Santa Fe, NM",
+        "code": "SAF"
+    },
+    {
+        "name": "Santa Maria, CA",
+        "code": "SMX"
+    },
+    {
+        "name": "Santa Rosa, CA",
+        "code": "STS"
+    },
+    {
+        "name": "Saranac Lake, NY",
+        "code": "SLK"
+    },
+    {
+        "name": "Sarasota, FL",
+        "code": "SRQ"
+    },
+    {
+        "name": "Sault Ste Marie, MI,",
+        "code": "CIU"
+    },
+    {
+        "name": "Savannah, GA",
+        "code": "SAV"
+    },
+    {
+        "name": "Savoonga, AK",
+        "code": "SVA"
+    },
+    {
+        "name": "Scammon Bay, AK",
+        "code": "SCM"
+    },
+    {
+        "name": "Scottsbluff, NE",
+        "code": "BFF"
+    },
+    {
+        "name": "Scottsdale, AZ",
+        "code": "SDL"
+    },
+    {
+        "name": "Scranton, PA",
+        "code": "AVP"
+    },
+    {
+        "name": "Seattle, WA - Lake Union SPB",
+        "code": "LKE"
+    },
+    {
+        "name": "Seattle, WA - Seattle/Tacoma International",
+        "code": "SEA"
+    },
+    {
+        "name": "Selawik, AK",
+        "code": "WLK"
+    },
+    {
+        "name": "Seward, AK",
+        "code": "SWD"
+    },
+    {
+        "name": "Shageluk, AK",
+        "code": "SHX"
+    },
+    {
+        "name": "Shaktoolik, AK",
+        "code": "SKK"
+    },
+    {
+        "name": "Sheffield/Florence/Muscle Shoals, AL",
+        "code": "MSL"
+    },
+    {
+        "name": "Sheldon Point, AK",
+        "code": "SXP"
+    },
+    {
+        "name": "Sheridan, WY",
+        "code": "SHR"
+    },
+    {
+        "name": "Shishmaref, AK",
+        "code": "SHH"
+    },
+    {
+        "name": "Shreveport, LA",
+        "code": "SHV"
+    },
+    {
+        "name": "Shungnak, AK",
+        "code": "SHG"
+    },
+    {
+        "name": "Silver City, NM",
+        "code": "SVC"
+    },
+    {
+        "name": "Sioux City, IA",
+        "code": "SUX"
+    },
+    {
+        "name": "Sioux Falls, SD",
+        "code": "FSD"
+    },
+    {
+        "name": "Sitka, AK",
+        "code": "SIT"
+    },
+    {
+        "name": "Skagway, AK",
+        "code": "SGY"
+    },
+    {
+        "name": "Sleetmore, AK",
+        "code": "SLQ"
+    },
+    {
+        "name": "South Bend, IN",
+        "code": "SBN"
+    },
+    {
+        "name": "South Naknek, AK",
+        "code": "WSN"
+    },
+    {
+        "name": "Southern Pines, NC",
+        "code": "SOP"
+    },
+    {
+        "name": "Spartanburg/Greenville, SC",
+        "code": "GSP"
+    },
+    {
+        "name": "Spokane, WA",
+        "code": "GEG"
+    },
+    {
+        "name": "Springfield, IL",
+        "code": "SPI"
+    },
+    {
+        "name": "Springfield, MO",
+        "code": "SGF"
+    },
+    {
+        "name": "St Petersburg/Clearwater, FL",
+        "code": "PIE"
+    },
+    {
+        "name": "State College/University Park, PA",
+        "code": "SCE"
+    },
+    {
+        "name": "Staunton, VA",
+        "code": "SHD"
+    },
+    {
+        "name": "Steamboat Springs, CO",
+        "code": "SBS"
+    },
+    {
+        "name": "Stebbins, AK",
+        "code": "WBB"
+    },
+    {
+        "name": "Stevens Point/Wausau, WI",
+        "code": "CWA"
+    },
+    {
+        "name": "Stevens Village, AK",
+        "code": "SVS"
+    },
+    {
+        "name": "Stewart Field/Newburgh, NY",
+        "code": "SWF"
+    },
+    {
+        "name": "Stockton, CA",
+        "code": "SCK"
+    },
+    {
+        "name": "Stony River, AK",
+        "code": "SRV"
+    },
+    {
+        "name": "Sun Valley, ID",
+        "code": "SUN"
+    },
+    {
+        "name": "Syracuse, NY",
+        "code": "SYR"
+    },
+    {
+        "name": "Takotna, AK",
+        "code": "TCT"
+    },
+    {
+        "name": "Talkeetna, AK",
+        "code": "TKA"
+    },
+    {
+        "name": "Tallahassee, FL",
+        "code": "TLH"
+    },
+    {
+        "name": "Tampa, FL",
+        "code": "TPA"
+    },
+    {
+        "name": "Tanana, AK",
+        "code": "TAL"
+    },
+    {
+        "name": "Taos, NM",
+        "code": "TSM"
+    },
+    {
+        "name": "Tatitlek, AK",
+        "code": "TEK"
+    },
+    {
+        "name": "Teller Mission, AK",
+        "code": "KTS"
+    },
+    {
+        "name": "Telluride, CO",
+        "code": "TEX"
+    },
+    {
+        "name": "Tenakee Springs, AK",
+        "code": "TKE"
+    },
+    {
+        "name": "Terre Haute, IN",
+        "code": "HUF"
+    },
+    {
+        "name": "Tetlin, AK",
+        "code": "TEH"
+    },
+    {
+        "name": "Texarkana, AR",
+        "code": "TXK"
+    },
+    {
+        "name": "Thief River Falls, MN",
+        "code": "TVF"
+    },
+    {
+        "name": "Thorne Bay, AK",
+        "code": "KTB"
+    },
+    {
+        "name": "Tin City, AK",
+        "code": "TNC"
+    },
+    {
+        "name": "Togiak Village, AK",
+        "code": "TOG"
+    },
+    {
+        "name": "Tok, AK",
+        "code": "TKJ"
+    },
+    {
+        "name": "Toksook Bay, AK",
+        "code": "OOK"
+    },
+    {
+        "name": "Toledo, OH",
+        "code": "TOL"
+    },
+    {
+        "name": "Topeka, KS",
+        "code": "FOE"
+    },
+    {
+        "name": "Traverse City, MI",
+        "code": "TVC"
+    },
+    {
+        "name": "Trenton/Mercer, NJ",
+        "code": "TTN"
+    },
+    {
+        "name": "Tucson, AZ",
+        "code": "TUS"
+    },
+    {
+        "name": "Tulsa, OK",
+        "code": "TUL"
+    },
+    {
+        "name": "Tuluksak, AK",
+        "code": "TLT"
+    },
+    {
+        "name": "Tuntutuliak, AK",
+        "code": "WTL"
+    },
+    {
+        "name": "Tununak, AK",
+        "code": "TNK"
+    },
+    {
+        "name": "Tupelo, MS",
+        "code": "TUP"
+    },
+    {
+        "name": "Tuscaloosa, AL",
+        "code": "TCL"
+    },
+    {
+        "name": "Twin Falls, ID",
+        "code": "TWF"
+    },
+    {
+        "name": "Twin Hills, AK",
+        "code": "TWA"
+    },
+    {
+        "name": "Tyler, TX",
+        "code": "TYR"
+    },
+    {
+        "name": "Unalakleet, AK",
+        "code": "UNK"
+    },
+    {
+        "name": "Urbana/Champaign, IL",
+        "code": "CMI"
+    },
+    {
+        "name": "Utica, NY",
+        "code": "UCA"
+    },
+    {
+        "name": "Utopia Creek, AK",
+        "code": "UTO"
+    },
+    {
+        "name": "Vail, CO - Eagle County Airport",
+        "code": "EGE"
+    },
+    {
+        "name": "Vail, CO - Van service",
+        "code": "QBF"
+    },
+    {
+        "name": "Valdez, AK",
+        "code": "VDZ"
+    },
+    {
+        "name": "Valdosta, GA",
+        "code": "VLD"
+    },
+    {
+        "name": "Valparaiso, FL",
+        "code": "VPS"
+    },
+    {
+        "name": "Venetie, AK",
+        "code": "VEE"
+    },
+    {
+        "name": "Ventura/Oxnard, CA",
+        "code": "OXR"
+    },
+    {
+        "name": "Vernal, UT",
+        "code": "VEL"
+    },
+    {
+        "name": "Victoria, TX",
+        "code": "VCT"
+    },
+    {
+        "name": "Visalia, CA",
+        "code": "VIS"
+    },
+    {
+        "name": "Waco, TX",
+        "code": "ACT"
+    },
+    {
+        "name": "Wainwright, AK",
+        "code": "AIN"
+    },
+    {
+        "name": "Wales, AK",
+        "code": "WAA"
+    },
+    {
+        "name": "Walla Walla, WA",
+        "code": "ALW"
+    },
+    {
+        "name": "Washington DC - Dulles",
+        "code": "IAD"
+    },
+    {
+        "name": "Washington DC - National",
+        "code": "DCA"
+    },
+    {
+        "name": "Waterfall, AK",
+        "code": "KWF"
+    },
+    {
+        "name": "Waterloo, IA",
+        "code": "ALO"
+    },
+    {
+        "name": "Watertown, NY",
+        "code": "ART"
+    },
+    {
+        "name": "Watertown, SD",
+        "code": "ATY"
+    },
+    {
+        "name": "Wausau/Stevens Point, WI",
+        "code": "CWA"
+    },
+    {
+        "name": "Wenatchee, WA",
+        "code": "EAT"
+    },
+    {
+        "name": "West Palm Beach, FL",
+        "code": "PBI"
+    },
+    {
+        "name": "West Yellowstone, MT",
+        "code": "WYS"
+    },
+    {
+        "name": "Westchester County, NY",
+        "code": "HPN"
+    },
+    {
+        "name": "Westerly, RI",
+        "code": "WST"
+    },
+    {
+        "name": "Westsound, WA",
+        "code": "WSX"
+    },
+    {
+        "name": "Whale Pass, AK",
+        "code": "WWP"
+    },
+    {
+        "name": "White Mountain, AK",
+        "code": "WMO"
+    },
+    {
+        "name": "White River, VT",
+        "code": "LEB"
+    },
+    {
+        "name": "Wichita Falls, TX",
+        "code": "SPS"
+    },
+    {
+        "name": "Wichita, KS",
+        "code": "ICT"
+    },
+    {
+        "name": "Wilkes Barre, PA",
+        "code": "AVP"
+    },
+    {
+        "name": "Williamsburg, VA",
+        "code": "PHF"
+    },
+    {
+        "name": "Williamsport, PA",
+        "code": "IPT"
+    },
+    {
+        "name": "Williston, ND",
+        "code": "ISN"
+    },
+    {
+        "name": "Wilmington, NC",
+        "code": "ILM"
+    },
+    {
+        "name": "Windsor Locks, CT",
+        "code": "BDL"
+    },
+    {
+        "name": "Worcester, MA",
+        "code": "ORH"
+    },
+    {
+        "name": "Worland, WY",
+        "code": "WRL"
+    },
+    {
+        "name": "Wrangell, AK",
+        "code": "WRG"
+    },
+    {
+        "name": "Yakima, WA",
+        "code": "YKM"
+    },
+    {
+        "name": "Yakutat, AK",
+        "code": "YAK"
+    },
+    {
+        "name": "Yellowstone/Cody, WY",
+        "code": "COD"
+    },
+    {
+        "name": "Youngstown, OH",
+        "code": "YNG"
+    },
+    {
+        "name": "Yuma, AZ",
+        "code": "YUM"
+    }
+]
