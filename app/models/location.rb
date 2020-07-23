@@ -13,4 +13,7 @@
 
 class Location < ActiveRecord::Base
 
+  has_many :rescues_from, class_name: 'Rescue', foreign_key: 'from_id'
+  has_many :rescues_to, class_name: 'Rescue', foreign_key: 'to_id'
+
 end

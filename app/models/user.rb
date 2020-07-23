@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   include ActiveModel::Serialization
   include Uuidable
 
+  has_many :rescues_receiving, class_name: 'Rescue', foreign_key: 'receiving_user_id'
+
   validates_presence_of :email
   validates_uniqueness_of :email
 

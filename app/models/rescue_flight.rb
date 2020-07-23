@@ -12,4 +12,7 @@
 
 class RescueFlight < ActiveRecord::Base
 
+  belongs_to :rescue
+  belongs_to :flight
+
 end

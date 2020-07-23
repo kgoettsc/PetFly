@@ -13,4 +13,8 @@
 
 class Flight < ActiveRecord::Base
 
+  belongs_to :user
+
+  has_many :rescue_flights
+
 end

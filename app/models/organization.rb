@@ -14,4 +14,6 @@
 
 class Organization < ActiveRecord::Base
 
+  has_many :rescues
+
 end

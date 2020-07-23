@@ -13,4 +13,6 @@
 
 class Animal < ActiveRecord::Base
 
+  has_many :rescues
+
 end

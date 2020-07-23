@@ -31,7 +31,7 @@ class AddPetModels < ActiveRecord::Migration[6.0]
       t.uuid :uuid
       t.references :organization
       t.references :animal
-      t.references :receiving_user_id, references: :user
+      t.references :receiving_user, references: :user
       t.references :from, references: :location
       t.references :to, references: :location
 
