@@ -1,0 +1,8 @@
+- if flash.present?
+  .flash
+    - if flash[:success]
+      .success
+        = flash[:success]
+    - if flash[:error]
+      .error
+        = flash[:error]
