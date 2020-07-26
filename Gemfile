@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'awesome_print'
 gem 'rtesseract'
 gem 'faker'
+gem 'faraday'
 gem 'uuid'
 gem 'annotate'
 gem 'pdf-reader'

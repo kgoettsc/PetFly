@@ -293,6 +293,7 @@ DEPENDENCIES
   elasticsearch-model
   elasticsearch-rails
   faker
+  faraday
   jbuilder (~> 2.7)
   lodash-rails
   omniauth-google-oauth2

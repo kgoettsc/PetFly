@@ -11,6 +11,8 @@
 #  to_id             :bigint
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  from_airports     :string           default([]), is an Array
+#  to_airports       :string           default([]), is an Array
 #
 
 class Rescue < ActiveRecord::Base
