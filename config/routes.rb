@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
+  resources :login, only: [:index]
+  resources :user_auths, only: [:index]
+
   get '*path', to: 'home#index'
 end
