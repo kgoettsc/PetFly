@@ -41,7 +41,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def karl?
+  def full_name
+    return "" unless first_name.present? && last_name.present?
+    "#{first_name} #{last_name}"
+  end
+
+  def admin?
     email == "pvtidaho@gmail.com"
   end
 
