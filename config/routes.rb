@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root 'users#show'
+  root 'home#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  resource :users
+  get '*path', to: 'home#index'
 end
