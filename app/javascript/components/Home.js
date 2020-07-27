@@ -15,6 +15,15 @@ class Home extends React.Component {
           <Button
             size="small"
             component={Link}
+            to="/orgPortal">
+            Organization Portal
+          </Button>
+        </Typography>
+        <Typography
+          component="h6">
+          <Button
+            size="small"
+            component={Link}
             to="/addFlight">
             Add Flight
           </Button>

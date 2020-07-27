@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Users from "../components/Users";
+import OrganizationPortal from "../components/OrganizationPortal";
 import AddFlight from "../components/AddFlight";
 import RescueList from "../components/RescueList";
 import Home from "../components/Home";
@@ -12,6 +13,7 @@ export default (
       <Route>
         <HomeContainer>
           <Route path="/" exact component={Home} />
+          <Route path="/orgPortal" component={OrganizationPortal} />
           <Route path="/addFlight" component={AddFlight} />
           <Route path="/rescues" component={RescueList} />
           <Route path="/users">
