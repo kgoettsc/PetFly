@@ -15,5 +15,7 @@
 class Organization < ActiveRecord::Base
 
   has_many :rescues
+  has_many :organization_users
+  has_many :users, through: :organization_users
 
 end

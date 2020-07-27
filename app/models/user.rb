@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
 
   has_many :rescues_receiving, class_name: 'Rescue', foreign_key: 'receiving_user_id'
 
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
+
   validates_presence_of :email
   validates_uniqueness_of :email
 
