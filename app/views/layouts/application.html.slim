@@ -9,8 +9,6 @@ html
   .container
     .action-box
       -if current_user
-        = render partial: 'shared/flash'
-        p= "Hi, #{current_user.first_name}!"
         = yield
       -else
         h2 Please Log In

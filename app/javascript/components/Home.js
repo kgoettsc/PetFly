@@ -1,11 +1,33 @@
 import React from 'react'
+import { Typography, Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
   render() {
     return (
       <div>
-        Home Home
+        <Typography
+          component="h6">
+          <Button
+            size="small"
+            component={Link}
+            to="/addFlight">
+            Add Flight
+          </Button>
+        </Typography>
+        <Typography
+          component="h6">
+          <Button
+            size="small"
+            component={Link}
+            to="/rescues">
+            See Rescues
+          </Button>
+        </Typography>
       </div>
     )
   }
