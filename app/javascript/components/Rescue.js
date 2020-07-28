@@ -44,7 +44,7 @@ class Rescue extends React.Component {
       rescue
     } = this.state
 
-    if (!rescue) {
+    if (!rescue.animal || !rescue.animal.name) {
       return null
     }
 

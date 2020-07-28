@@ -7,7 +7,7 @@ class OrganizationPortal extends React.Component {
     super(props)
 
     this.getOrganizations()
-    this.getRescues()
+    this.getOrgRescues()
 
     this.state = {
       organizations: [],
@@ -34,7 +34,7 @@ class OrganizationPortal extends React.Component {
     });
   }
 
-  getRescues(){
+  getOrgRescues(){
     $.ajax({
       url: '/rescues/active_by_user',
       method: 'GET',

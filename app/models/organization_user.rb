@@ -14,7 +14,19 @@
 class OrganizationUser < ActiveRecord::Base
   include Uuidable
 
+  before_destroy :archive
+
   belongs_to :organization
   belongs_to :user
+
+  validates_uniqueness_of :user_id, scope: [:organization_id, :archived_at]
+
+  scope :active, -> {where(archived_at: nil)}
+
+  default_scope -> {active}
+
+  def archive(archived_at = DateTime.now)
+    update!(archived_at: archived_at)
+  end
 
 end
