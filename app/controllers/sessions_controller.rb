@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_logged_in
+
   def create
     begin
       user = User.from_omniauth(request.env["omniauth.auth"])
