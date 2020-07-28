@@ -1,8 +1,9 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, useParams } from "react-router-dom";
 import Users from "../components/Users";
 import OrganizationPortal from "../components/OrganizationPortal";
 import AddFlight from "../components/AddFlight";
+import Rescue from "../components/Rescue";
 import RescueList from "../components/RescueList";
 import Home from "../components/Home";
 import HomeContainer from "../components/HomeContainer";
@@ -20,8 +21,20 @@ export default (
             <Users
               users={['12','34','56a']}/>
           </Route>
+          <Route
+            path="/rescue/:rescueUuid"
+            children={<RescueComponent />} />
         </HomeContainer>
       </Route>
     </Switch>
   </Router>
 );
+
+function RescueComponent() {
+  let {rescueUuid} = useParams()
+
+  return (
+    <Rescue
+      rescueUuid={rescueUuid} />
+  )
+}

@@ -1,12 +1,13 @@
 import React from 'react'
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class OrganizationPortal extends React.Component {
   constructor(props) {
     super(props)
 
     this.getOrganizations()
-    this.getRescues()
+    this.getOrgRescues()
 
     this.state = {
       organizations: [],
@@ -33,7 +34,7 @@ class OrganizationPortal extends React.Component {
     });
   }
 
-  getRescues(){
+  getOrgRescues(){
     $.ajax({
       url: '/rescues/active_by_user',
       method: 'GET',
@@ -83,7 +84,12 @@ class OrganizationPortal extends React.Component {
       return (
         <span
           key={`rescues-${index}`}>
-          {animal.name} - ({organization.name})
+          <Button
+            size="small"
+            component={Link}
+            to={"/rescue/" + rescue.uuid} >
+            {animal.name} - ({organization.name})
+          </Button>
         </span>
       )
     })
