@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Grid, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class RescueList extends React.Component {
   constructor(props) {

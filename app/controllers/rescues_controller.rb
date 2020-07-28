@@ -39,7 +39,8 @@ class RescuesController < ApplicationController
     _rescue = Rescue.create(
       animal: animal,
       organization: organization,
-      receiving_user: receiving_user
+      receiving_user: receiving_user,
+      status: "active"
     )
 
     render json: {rescue: JsonService.rescue_json(_rescue)}

@@ -72,8 +72,17 @@ class AddRescue extends React.Component {
         'X-CSRF-Token': ApiUtils.getCsrfToken(document),
       },
       success: (data) => {
-        let {rescue} = data
-        console.log(`saved the country for ${rescue.uuid}`)
+        let rescueData = data.rescue
+        let rescue = {}
+
+        rescue.uuid = rescueData.uuid
+        rescue.name = rescueData.animal.name
+        rescue.kind = rescueData.animal.kind
+        rescue.breed = rescueData.animal.breed
+        rescue.info_url = rescueData.animal.info_url
+        rescue.organization_uuid = rescueData.organization.uuid
+
+        console.log(`saved the rescue for ${rescue.uuid}`)
 
         this.setState({
           isSaving: false,
