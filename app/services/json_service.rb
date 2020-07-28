@@ -44,7 +44,6 @@ class JsonService
     def animal(_animal)
       _animal.slice(
         :name,
-        :type,
         :info_url,
         :kind,
         :breed

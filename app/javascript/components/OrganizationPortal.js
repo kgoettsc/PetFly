@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class OrganizationPortal extends React.Component {
   constructor(props) {
@@ -83,7 +84,12 @@ class OrganizationPortal extends React.Component {
       return (
         <span
           key={`rescues-${index}`}>
-          {animal.name} - ({organization.name})
+          <Button
+            size="small"
+            component={Link}
+            to={"/rescue/" + rescue.uuid} >
+            {animal.name} - ({organization.name})
+          </Button>
         </span>
       )
     })
