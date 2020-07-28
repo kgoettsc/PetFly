@@ -9,10 +9,21 @@
 #  info_url   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  kind       :string
+#  breed      :string
 #
 
 class Animal < ActiveRecord::Base
+  include Uuidable
 
   has_many :rescues
+
+end
+
+class Dog < Animal
+
+end
+
+class Cat < Animal
 
 end

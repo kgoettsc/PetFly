@@ -12,6 +12,7 @@
 #
 
 class Flight < ActiveRecord::Base
+  include Uuidable
 
   belongs_to :user
 

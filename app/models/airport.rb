@@ -13,5 +13,6 @@
 #
 
 class Airport < ActiveRecord::Base
+  include Uuidable
 
 end
