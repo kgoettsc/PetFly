@@ -115,6 +115,12 @@ class OrganizationPortal extends React.Component {
           <Grid
             item
             xs={6} >
+            <Button
+              size="small"
+              component={Link}
+              to="addRescue" >
+              <b>Add New Rescue</b>
+            </Button>
             {rescueList}
           </Grid>
         </Grid>
