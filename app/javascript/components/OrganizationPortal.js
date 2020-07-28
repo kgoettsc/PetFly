@@ -6,9 +6,11 @@ class OrganizationPortal extends React.Component {
     super(props)
 
     this.getOrganizations()
+    this.getRescues()
 
     this.state = {
-      organizations: []
+      organizations: [],
+      rescues: []
     }
   }
 
@@ -26,7 +28,26 @@ class OrganizationPortal extends React.Component {
         })
       },
       error: (data) => {
-        console.log("error for user")
+        console.log("error for orgs")
+      }
+    });
+  }
+
+  getRescues(){
+    $.ajax({
+      url: '/rescues/active_by_user',
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got rescues!")
+        let {rescues} = data
+
+        this.setState({
+          rescues
+        })
+      },
+      error: (data) => {
+        console.log("error for rescues")
       }
     });
   }
@@ -35,7 +56,7 @@ class OrganizationPortal extends React.Component {
     let {
       organizations
     } = this.state
-    console.log("render org cards")
+
     let displayList = organizations.map((organization, index) => {
       return (
         <span
@@ -45,12 +66,34 @@ class OrganizationPortal extends React.Component {
       )
     })
 
+    return displayList
+  }
+
+  renderRescueCards() {
+    let {
+      rescues
+    } = this.state
+
+    let displayList = rescues.map((rescue, index) => {
+      let {
+        animal,
+        organization
+      } = rescue
+
+      return (
+        <span
+          key={`rescues-${index}`}>
+          {animal.name} - ({organization.name})
+        </span>
+      )
+    })
 
     return displayList
   }
 
   render() {
     let orgList = this.renderOrgCards()
+    let rescueList = this.renderRescueCards()
 
     return (
       <div>
@@ -66,7 +109,7 @@ class OrganizationPortal extends React.Component {
           <Grid
             item
             xs={6} >
-
+            {rescueList}
           </Grid>
         </Grid>
       </div>

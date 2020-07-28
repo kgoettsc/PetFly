@@ -24,6 +24,32 @@ class JsonService
         :uuid,
       )
     end
+
+    def rescues(_rescues)
+      _rescues.map{|r| rescue_json(r)}
+    end
+
+    def rescue_json(_rescue)
+      _rescue.slice(
+        :from_airports,
+        :to_airports,
+        :status,
+        :uuid,
+      ).merge(
+        organization: organization(_rescue.organization),
+        animal: animal(_rescue.animal)
+      )
+    end
+
+    def animal(_animal)
+      _animal.slice(
+        :name,
+        :type,
+        :info_url,
+        :kind,
+        :breed
+      )
+    end
   end
 
 end

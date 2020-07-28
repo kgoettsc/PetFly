@@ -20,5 +20,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :rescues, only: [:index, :show, :create, :update, :destroy] do
+    collection do
+      get :active_by_user
+    end
+  end
+
   get '*path', to: 'home#index'
 end

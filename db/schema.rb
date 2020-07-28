@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_171948) do
+ActiveRecord::Schema.define(version: 2020_07_27_225324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_171948) do
     t.string "info_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "kind"
+    t.string "breed"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -96,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_171948) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "from_airports", default: [], array: true
     t.string "to_airports", default: [], array: true
+    t.string "status"
     t.index ["animal_id"], name: "index_rescues_on_animal_id"
     t.index ["from_id"], name: "index_rescues_on_from_id"
     t.index ["organization_id"], name: "index_rescues_on_organization_id"

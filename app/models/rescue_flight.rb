@@ -11,6 +11,7 @@
 #
 
 class RescueFlight < ActiveRecord::Base
+  include Uuidable
 
   belongs_to :rescue
   belongs_to :flight
