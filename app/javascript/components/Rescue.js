@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 
 import _ from 'lodash'
 
-import { TextField, IconButton, Select, MenuItem, Typography } from '@material-ui/core'
+import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid } from '@material-ui/core'
 
 import { Save, Edit, Cancel } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 
-class AddRescue extends React.Component {
+class Rescue extends React.Component {
   constructor(props) {
     super(props)
 
@@ -215,7 +215,7 @@ class AddRescue extends React.Component {
 
   renderStatus(status) {
     let color = ''
-    console.log(status)
+
     if (status === 'active') {
       color = '#02a114'
     } else if (status === 'pending') {
@@ -251,12 +251,18 @@ class AddRescue extends React.Component {
 
     let editArea = (
       <div>
-        <Select
-          value={rescue.organization_uuid}
-          onChange={this.saveOrg.bind(this)}
-          label='Organization'>
-          {orgSelects}
-        </Select>
+        <FormControl>
+          <InputLabel>
+            Organization
+          </InputLabel>
+          <Select
+            value={rescue.organization_uuid}
+            onChange={this.saveOrg.bind(this)}
+            label='Organization'
+            style={{width: '300px'}}>
+            {orgSelects}
+          </Select>
+        </FormControl>
         <div>
           <TextField
             required
@@ -278,15 +284,20 @@ class AddRescue extends React.Component {
                 fontSize='small'/>
             </IconButton>
         </div>
-        <Select
-          value={rescue.kind}
-          onChange={this.saveKind.bind(this)}
-          label='Kind'
-          style={{width: '300px'}}>
-          <MenuItem value='dog'>Dog</MenuItem>
-          <MenuItem value='cat'>Cat</MenuItem>
-          <MenuItem value='balrog'>Balrog</MenuItem>
-        </Select>
+        <FormControl>
+          <InputLabel>
+            Kind
+          </InputLabel>
+          <Select
+            value={rescue.kind}
+            onChange={this.saveKind.bind(this)}
+            label='Kind'
+            style={{width: '300px'}}>
+            <MenuItem value='dog'>Dog</MenuItem>
+            <MenuItem value='cat'>Cat</MenuItem>
+            <MenuItem value='balrog'>Balrog</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           required
           onChange={this.saveBreed.bind(this)}
@@ -299,21 +310,26 @@ class AddRescue extends React.Component {
           label='Info URL'
           style={{width: '300px'}}
           value={rescue.info_url}/>
-        <Select
-          value={rescue.status}
-          onChange={this.saveStatus.bind(this)}
-          label='Status'
-          style={{width: '300px'}}>
-          <MenuItem
-            value='active'
-            style={{color: '#02a114'}}>Active</MenuItem>
-          <MenuItem
-            value='pending'
-            style={{color: '#fcba03'}}>Pending</MenuItem>
-          <MenuItem
-            value='closed'
-            style={{color: '#ad0c00'}}>Closed</MenuItem>
-        </Select>
+        <FormControl>
+          <InputLabel>
+            Travel Need Status
+          </InputLabel>
+          <Select
+            value={rescue.status}
+            onChange={this.saveStatus.bind(this)}
+            label='Status'
+            style={{width: '300px'}}>
+            <MenuItem
+              value='active'
+              style={{color: '#02a114'}}>Active</MenuItem>
+            <MenuItem
+              value='pending'
+              style={{color: '#fcba03'}}>Pending</MenuItem>
+            <MenuItem
+              value='closed'
+              style={{color: '#ad0c00'}}>Closed</MenuItem>
+          </Select>
+        </FormControl>
       </div>
     )
 
@@ -385,14 +401,26 @@ class AddRescue extends React.Component {
 
     return (
       <div>
-        {editArea}
+        <Grid
+          container
+          spacing={3} >
+          <Grid
+            item
+            xs={6} >
+            {editArea}
+          </Grid>
+          <Grid
+            item
+            xs={6} >
+          </Grid>
+        </Grid>
       </div>
     )
   }
 }
 
-AddRescue.propTypes = {
+Rescue.propTypes = {
   rescueUuid: PropTypes.string
 }
 
-export default AddRescue
+export default Rescue

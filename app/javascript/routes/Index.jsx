@@ -6,7 +6,7 @@ import AddFlight from "../components/AddFlight";
 import RescueList from "../components/RescueList";
 import Home from "../components/Home";
 import HomeContainer from "../components/HomeContainer";
-import AddRescue from "../components/AddRescue";
+import Rescue from "../components/Rescue";
 
 export default (
   <Router>
@@ -16,7 +16,7 @@ export default (
           <Route path="/" exact component={Home} />
           <Route path="/orgPortal" component={OrganizationPortal} />
           <Route path="/addFlight" component={AddFlight} />
-          <Route path="/addRescue" component={AddRescue} />
+          <Route path="/addRescue" component={Rescue} />
           <Route path="/rescues" component={RescueList} />
           <Route path="/users">
             <Users
@@ -35,7 +35,7 @@ function RescueComponent() {
   let {rescueUuid} = useParams()
 
   return (
-    <AddRescue
+    <Rescue
       rescueUuid={rescueUuid} />
   )
 }
