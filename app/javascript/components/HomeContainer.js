@@ -8,35 +8,35 @@ class HomeContainer extends React.Component {
   constructor(props){
     super(props)
 
-    this.getUser()
+    // this.getUser()
 
-    this.state = {
-      user: {},
-    }
+    // this.state = {
+    //   user: {},
+    // }
   }
 
-  getUser() {
-    $.ajax({
-      url: '/user_auths',
-      method: 'GET',
-      contentType: 'application/json',
-      success: (data) => {
-        let {user} = data
+  // getUser() {
+  //   $.ajax({
+  //     url: '/user_auths',
+  //     method: 'GET',
+  //     contentType: 'application/json',
+  //     success: (data) => {
+  //       let {user} = data
 
-        this.setState({
-          user
-        })
-      },
-      error: (data) => {
-        console.log("error for user")
-      }
-    });
-  }
+  //       this.setState({
+  //         user
+  //       })
+  //     },
+  //     error: (data) => {
+  //       console.log("error for user")
+  //     }
+  //   });
+  // }
 
   render() {
-    let {
-      user
-    } = this.state
+    // let {
+    //   user
+    // } = this.state
 
     return (
       <div>
@@ -49,7 +49,7 @@ class HomeContainer extends React.Component {
             PetFly
           </Button>
         </Typography>
-        <span>Welcome {user.full_name}</span>
+        {/*<span>Welcome {user.full_name}</span>*/}
         <br/>
         {this.props.children}
       </div>
