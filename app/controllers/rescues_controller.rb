@@ -40,13 +40,36 @@ class RescuesController < ApplicationController
       animal: animal,
       organization: organization,
       receiving_user: receiving_user,
-      status: "active"
+      status: params[:status] || "active"
+    )
+
+    render json: {rescue: JsonService.rescue_json(_rescue)}
+  end
+
+  def update
+    organization = Organization.find_by(uuid: rescue_params[:organization_uuid])
+    receiving_user = User.find_by(uuid: rescue_params[:receiving_user_uuid])
+
+    _rescue = Rescue.includes(:animal).find_by(uuid: params[:id])
+    animal = _rescue.animal
+
+    animal.update!(
+      name: rescue_params[:name],
+      kind: rescue_params[:kind],
+      breed: rescue_params[:breed],
+      info_url: rescue_params[:info_url]
+    )
+
+    _rescue.update!(
+      organization: organization,
+      receiving_user: receiving_user,
+      status: params[:status]
     )
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :info_url, :organization_uuid, :receiving_user_uuid)
+    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_uuid)
   end
 end
