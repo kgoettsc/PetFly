@@ -18,6 +18,7 @@ class Rescue extends React.Component {
     } = props
 
     this.getOrganizations()
+    this.getAirports()
     this.getRescue()
 
     this.state = {
@@ -34,6 +35,7 @@ class Rescue extends React.Component {
       },
       isSaving: false,
       organizations: [],
+      airports: [],
       editMode: !rescueUuid
     }
   }
@@ -53,6 +55,27 @@ class Rescue extends React.Component {
       },
       error: (data) => {
         console.log("error for orgs")
+      }
+    });
+  }
+
+  getAirports() {
+    $.ajax({
+      url: `/airports`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got the airports!")
+        let {
+          airports
+        } = data
+
+        this.setState({
+          airports
+        })
+      },
+      error: (data) => {
+        console.log("error for airports")
       }
     });
   }

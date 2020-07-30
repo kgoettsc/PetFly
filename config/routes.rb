@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :login, only: [:index]
   resources :user_auths, only: [:index]
 
+  resources :airports, only: [:index]
+
   resources :organizations, only: [:index, :show, :create, :update, :destroy] do
     collection do
       get :by_user
