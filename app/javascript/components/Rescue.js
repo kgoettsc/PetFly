@@ -74,12 +74,7 @@ class Rescue extends React.Component {
           airports
         } = data
 
-        let {
-          rescue
-        } = this.state
-
-        console.log("calling from airports")
-        this.setAirports(airports, rescue)
+        this.setAirports()
 
         this.setState({
           airports
@@ -110,12 +105,7 @@ class Rescue extends React.Component {
         console.log("got the rescue!")
         let rescue = this.mapRescueData(data.rescue)
 
-        let {
-          airports
-        } = this.state
-
-        console.log("calling from rescue")
-        this.setAirports(airports, rescue)
+        this.setAirports()
 
         this.setState({
           rescue,
