@@ -49,6 +49,18 @@ class JsonService
         :breed
       )
     end
+
+    def airports(_airports)
+      _airports.map{|a| airport(a) }
+    end
+
+    def airport(_airport)
+      _airport.slice(
+        :code,
+        :name,
+        :uuid
+      )
+    end
   end
 
 end

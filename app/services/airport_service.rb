@@ -7,9 +7,9 @@ class AirportService
     airport_data = JSON.load(file)
     errors = []
     successes = 0
-    airport_data.each do |airport|
-      airport = Airport.find_or_create_by(code: airport["code"])
-      airport.update(name: airport["name"])
+    airport_data.each do |each_airport|
+      airport = Airport.find_or_create_by(code: each_airport["code"])
+      airport.update(name: each_airport["name"])
 
       successes+=1
     end
