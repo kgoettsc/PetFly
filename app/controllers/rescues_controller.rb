@@ -17,10 +17,20 @@ class RescuesController < ApplicationController
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
 
-  def active_by_user
+  def active_by_user_organizations
     organizations = current_user.organizations.with_active_rescues
 
     rescues = organizations.flat_map(&:rescues)
+
+    render json: {rescues: JsonService.rescues(rescues)}
+  end
+
+  def active_by_receiving_user
+    rescues = Rescue.includes(:organization, :animal, :receiving_user)
+                    .active
+                    .where(receiving_user: current_user)
+                    .order(:created_at)
+                    .limit(50)
 
     render json: {rescues: JsonService.rescues(rescues)}
   end
