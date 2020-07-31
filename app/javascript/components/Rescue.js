@@ -3,7 +3,9 @@ import PropTypes from "prop-types"
 
 import _ from 'lodash'
 
-import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid } from '@material-ui/core'
+import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid, Chip, Input } from '@material-ui/core'
+
+import { Autocomplete } from '@material-ui/lab';
 
 import { Save, Edit, Cancel } from '@material-ui/icons';
 
@@ -33,6 +35,8 @@ class Rescue extends React.Component {
         organization_name: "",
         receiving_user_uuid: ""
       },
+      selectedFromAirports: [],
+      selectedToAirports: [],
       isSaving: false,
       organizations: [],
       airports: [],
@@ -70,9 +74,18 @@ class Rescue extends React.Component {
           airports
         } = data
 
+        let {
+          rescue
+        } = this.state
+
+        console.log("calling from airports")
+        this.setAirports(airports, rescue)
+
         this.setState({
           airports
         })
+
+        this.setAirports()
       },
       error: (data) => {
         console.log("error for airports")
@@ -97,10 +110,19 @@ class Rescue extends React.Component {
         console.log("got the rescue!")
         let rescue = this.mapRescueData(data.rescue)
 
+        let {
+          airports
+        } = this.state
+
+        console.log("calling from rescue")
+        this.setAirports(airports, rescue)
+
         this.setState({
           rescue,
           editMode: false
         })
+
+        this.setAirports()
       },
       error: (data) => {
         console.log("error for rescue")
@@ -114,11 +136,20 @@ class Rescue extends React.Component {
     })
 
     let {
-      rescue
+      rescue,
+      selectedFromAirports,
+      selectedToAirports
     } = this.state
 
     let url = rescue.uuid ? `/rescues/${rescue.uuid}` : '/rescues'
     let method = rescue.uuid ? `PUT` : 'POST'
+
+    let fromAirportCodes = selectedFromAirports.map((airport) => {
+      return airport.code
+    })
+    let toAirportCodes = selectedToAirports.map((airport) => {
+      return airport.code
+    })
 
     let params = {
       "name": rescue.name,
@@ -126,6 +157,8 @@ class Rescue extends React.Component {
       "breed": rescue.breed,
       "status": rescue.status,
       "info_url": rescue.info_url,
+      "from_airports": fromAirportCodes,
+      "to_airports": toAirportCodes,
       "organization_uuid": rescue.organization_uuid,
       "receiving_user_uuid": rescue.receiving_user_uuid,
     }
@@ -161,15 +194,42 @@ class Rescue extends React.Component {
     let rescue = {}
 
     rescue.uuid = rescueData.uuid
+    rescue.status = rescueData.status
+    rescue.from_airports = rescueData.from_airports
+    rescue.to_airports = rescueData.to_airports
     rescue.name = rescueData.animal.name
     rescue.kind = rescueData.animal.kind
     rescue.breed = rescueData.animal.breed
-    rescue.status = rescueData.status
     rescue.info_url = rescueData.animal.info_url
     rescue.organization_uuid = rescueData.organization.uuid
     rescue.organization_name = rescueData.organization.name
 
     return rescue
+  }
+
+  setAirports() {
+    let {
+      airports,
+      rescue
+    } = this.state
+
+    if (!rescue.uuid || airports == []) {
+      return
+    }
+
+    let selectedFromAirports = _.filter(airports, (airport) => {
+      return _.includes(rescue.from_airports, airport.code)
+    })
+
+    let selectedToAirports = _.filter(airports, (airport) => {
+      return _.includes(rescue.to_airports, airport.code)
+    })
+
+    this.setState({
+      selectedFromAirports,
+      selectedToAirports
+    })
+
   }
 
   setEditMode = (editMode) => (e) => {
@@ -257,9 +317,12 @@ class Rescue extends React.Component {
 
   renderEditArea() {
     let {
+      airports,
       isSaving,
       rescue,
-      organizations
+      organizations,
+      selectedFromAirports,
+      selectedToAirports
     } = this.state
 
     let orgSelects = organizations.map((organization, index) => {
@@ -293,19 +356,19 @@ class Rescue extends React.Component {
             label='Name'
             style={{width: '300px'}}
             value={rescue.name} />
-            <IconButton
-              size='small'
-              disabled={isSaving}
-              onClick={this.saveRescue.bind(this)}>
-              <Save
-                fontSize='small'/>
-            </IconButton>
-            <IconButton
-              size='small'
-              onClick={this.setEditMode(false).bind(this)}>
-              <Cancel
-                fontSize='small'/>
-            </IconButton>
+          <IconButton
+            size='small'
+            disabled={isSaving}
+            onClick={this.saveRescue.bind(this)}>
+            <Save
+              fontSize='small'/>
+          </IconButton>
+          <IconButton
+            size='small'
+            onClick={this.setEditMode(false).bind(this)}>
+            <Cancel
+              fontSize='small'/>
+          </IconButton>
         </div>
         <FormControl>
           <InputLabel>
@@ -353,6 +416,66 @@ class Rescue extends React.Component {
               style={{color: '#ad0c00'}}>Closed</MenuItem>
           </Select>
         </FormControl>
+        <span
+          style={{display:'block', height:45}}>
+          <Autocomplete
+            multiple
+            id="tags-outlined"
+            options={airports}
+            value={selectedFromAirports}
+            onChange={this.saveFromAirports.bind(this)}
+            renderTags={(selected, getTagProps) => (
+              <div>
+                {selected.map((value) => {
+                  return (
+                    <Chip
+                      key={value.uuid}
+                      label={`${value.code} - ${value.name}`} />
+                  )
+                })}
+              </div>
+            )}
+            getOptionLabel={(airport) => `${airport.code} - ${airport.name}`}
+            filterSelectedOptions
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Eligible From Airports"
+              />
+            )}
+          />
+        </span>
+        <span
+          style={{display:'block', height:45}}>
+          <Autocomplete
+            multiple
+            id="tags-outlined"
+            options={airports}
+            value={selectedToAirports}
+            onChange={this.saveToAirports.bind(this)}
+            renderTags={(selected, getTagProps) => (
+              <div>
+                {selected.map((value) => {
+                  return (
+                    <Chip
+                      key={value.uuid}
+                      label={`${value.code} - ${value.name}`} />
+                  )
+                })}
+              </div>
+            )}
+            getOptionLabel={(airport) => `${airport.code} - ${airport.name}`}
+            filterSelectedOptions
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Eligible To Airports"
+              />
+            )}
+          />
+        </span>
       </div>
     )
 
@@ -416,6 +539,18 @@ class Rescue extends React.Component {
 
     this.setState({
       rescue
+    })
+  }
+
+  saveFromAirports(event, newValue) {
+    this.setState({
+      selectedFromAirports: newValue
+    })
+  }
+
+  saveToAirports(event, newValue) {
+    this.setState({
+      selectedToAirports: newValue
     })
   }
 

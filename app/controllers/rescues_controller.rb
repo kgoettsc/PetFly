@@ -63,13 +63,15 @@ class RescuesController < ApplicationController
     _rescue.update!(
       organization: organization,
       receiving_user: receiving_user,
-      status: params[:status]
+      status: params[:status],
+      from_airports: params[:from_airports] || [],
+      to_airports: params[:to_airports] || [],
     )
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_uuid)
+    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_uuid, from_airports: [], to_airports: [])
   end
 end
