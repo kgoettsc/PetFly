@@ -37,7 +37,8 @@ class JsonService
         :uuid,
       ).merge(
         organization: organization(_rescue.organization),
-        animal: animal(_rescue.animal)
+        animal: animal(_rescue.animal),
+        receiving_user: user(_rescue.receiving_user)
       )
     end
 
@@ -58,6 +59,17 @@ class JsonService
       _airport.slice(
         :code,
         :name,
+        :uuid
+      )
+    end
+
+    def user(_user)
+      return {} unless _user
+
+      _user.slice(
+        :email,
+        :first_name,
+        :last_name,
         :uuid
       )
     end

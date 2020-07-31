@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   resources :rescues, only: [:index, :show, :create, :update, :destroy] do
     collection do
-      get :active_by_user
+      get :active_by_user_organizations
+      get :active_by_receiving_user
       get :active
     end
   end

@@ -36,7 +36,7 @@ class OrganizationPortal extends React.Component {
 
   getOrgRescues(){
     $.ajax({
-      url: '/rescues/active_by_user',
+      url: '/rescues/active_by_user_organizations',
       method: 'GET',
       contentType: 'application/json',
       success: (data) => {

@@ -33,7 +33,9 @@ class Rescue extends React.Component {
         info_url: "",
         organization_uuid: "",
         organization_name: "",
-        receiving_user_uuid: ""
+        receiving_user_email: "",
+        receiving_user_first_name: "",
+        receiving_user_last_name: "",
       },
       selectedFromAirports: [],
       selectedToAirports: [],
@@ -150,7 +152,7 @@ class Rescue extends React.Component {
       "from_airports": fromAirportCodes,
       "to_airports": toAirportCodes,
       "organization_uuid": rescue.organization_uuid,
-      "receiving_user_uuid": rescue.receiving_user_uuid,
+      "receiving_user_email": rescue.receiving_user_email,
     }
 
     $.ajax({
@@ -183,16 +185,26 @@ class Rescue extends React.Component {
   mapRescueData(rescueData) {
     let rescue = {}
 
+    //rescue info
     rescue.uuid = rescueData.uuid
     rescue.status = rescueData.status
     rescue.from_airports = rescueData.from_airports
     rescue.to_airports = rescueData.to_airports
+
+    //animal info
     rescue.name = rescueData.animal.name
     rescue.kind = rescueData.animal.kind
     rescue.breed = rescueData.animal.breed
     rescue.info_url = rescueData.animal.info_url
+
+    // org info
     rescue.organization_uuid = rescueData.organization.uuid
     rescue.organization_name = rescueData.organization.name
+
+    //receiving user info
+    rescue.receiving_user_email = rescueData.receiving_user.email || ""
+    rescue.receiving_user_first_name = rescueData.receiving_user.first_name
+    rescue.receiving_user_last_name = rescueData.receiving_user.last_name
 
     return rescue
   }
@@ -279,6 +291,11 @@ class Rescue extends React.Component {
               href={rescue.info_url} >
             Link to Rescue
             </a>
+          </Typography> }
+        {rescue.receiving_user_email &&
+          <Typography
+            variant='h5'>
+            {`${rescue.receiving_user_first_name} ${rescue.receiving_user_last_name}`}
           </Typography> }
       </div>
     )
@@ -386,6 +403,12 @@ class Rescue extends React.Component {
           label='Info URL'
           style={{width: '300px'}}
           value={rescue.info_url}/>
+        <TextField
+          required
+          onChange={this.saveReceivingUser.bind(this)}
+          label='Receiving User'
+          style={{width: '300px'}}
+          value={rescue.receiving_user_email}/>
         <FormControl>
           <InputLabel>
             Travel Need Status
@@ -516,6 +539,16 @@ class Rescue extends React.Component {
     let {rescue} = this.state;
 
     rescue.info_url = event.target.value
+
+    this.setState({
+      rescue
+    })
+  }
+
+  saveReceivingUser(event) {
+    let {rescue} = this.state;
+
+    rescue.receiving_user_email = event.target.value
 
     this.setState({
       rescue
