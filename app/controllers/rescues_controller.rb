@@ -40,7 +40,9 @@ class RescuesController < ApplicationController
       animal: animal,
       organization: organization,
       receiving_user: receiving_user,
-      status: params[:status] || "active"
+      status: params[:status] || "active",
+      from_airports: params[:from_airports] || [],
+      to_airports: params[:to_airports] || []
     )
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
