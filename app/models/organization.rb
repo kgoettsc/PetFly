@@ -20,6 +20,6 @@ class Organization < ActiveRecord::Base
   has_many :organization_users
   has_many :users, through: :organization_users
 
-  scope :with_active_rescues, -> {includes(:rescues).where(rescues: {status: 'active'})}
+  scope :with_active_rescues, -> {includes(rescues: [:animal, :receiving_user]).where(rescues: {status: 'active'})}
 
 end

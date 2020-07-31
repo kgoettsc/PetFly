@@ -6,7 +6,7 @@ class RescuesController < ApplicationController
 
   def active
     # figure out ordering at somepoint
-    rescues = Rescue.active.order(:created_at).limit(50)
+    rescues = Rescue.includes(:organization, :animal, :receiving_user).active.order(:created_at).limit(50)
 
     render json: {rescues: JsonService.rescues(rescues)}
   end
@@ -27,7 +27,7 @@ class RescuesController < ApplicationController
 
   def create
     organization = Organization.find_by(uuid: rescue_params[:organization_uuid])
-    receiving_user = User.find_by(uuid: rescue_params[:receiving_user_uuid])
+    receiving_user = User.find_by(email: rescue_params[:receiving_user_email])
 
     animal = Animal.create(
       name: rescue_params[:name],
@@ -50,7 +50,7 @@ class RescuesController < ApplicationController
 
   def update
     organization = Organization.find_by(uuid: rescue_params[:organization_uuid])
-    receiving_user = User.find_by(uuid: rescue_params[:receiving_user_uuid])
+    receiving_user = User.find_by(email: rescue_params[:receiving_user_email])
 
     _rescue = Rescue.includes(:animal).find_by(uuid: params[:id])
     animal = _rescue.animal
@@ -74,6 +74,6 @@ class RescuesController < ApplicationController
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_uuid, from_airports: [], to_airports: [])
+    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
   end
 end
