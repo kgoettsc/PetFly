@@ -167,7 +167,7 @@ class Flight extends React.Component {
       <div>
         <div>
           <Typography
-            variant='h5'
+            variant='h3'
             style={{display: 'inline'}}>
             {flight.number}
           </Typography>
@@ -178,18 +178,46 @@ class Flight extends React.Component {
               fontSize='small'/>
           </IconButton>
         </div>
-        <Typography
-          variant='h5'>
-          {flight.departing_airport &&
-            `${flight.departing_date} - (${flight.departing_airport.code}) ${flight.departing_airport.name}`
-          }
-        </Typography>
-        <Typography
-          variant='h5'>
-          {flight.departing_airport &&
-            `${flight.departing_date} - (${flight.arriving_airport.code}) ${flight.arriving_airport.name}`
-          }
-        </Typography>
+        <div>
+          <Typography
+            variant='h4'>
+            Departing:
+          </Typography>
+          <Typography
+            variant='h5'
+            style={{paddingLeft: '10px'}}>
+            {flight.departing_date &&
+              `${moment(flight.departing_date).format('LLLL')}`
+            }
+          </Typography>
+          <Typography
+            variant='h5'
+            style={{paddingLeft: '10px'}}>
+            {flight.departing_airport &&
+              `\t(${flight.departing_airport.code}) ${flight.departing_airport.name}`
+            }
+          </Typography>
+        </div>
+        <div>
+          <Typography
+            variant='h4'>
+            Arriving:
+          </Typography>
+          <Typography
+            variant='h5'
+            style={{paddingLeft: '10px'}}>
+            {flight.arriving_date &&
+              `${moment(flight.arriving_date).format('LLLL')}`
+            }
+          </Typography>
+          <Typography
+            variant='h5'
+            style={{paddingLeft: '10px'}}>
+            {flight.arriving_airport &&
+              `\t(${flight.arriving_airport.code}) ${flight.arriving_airport.name}`
+            }
+          </Typography>
+        </div>
       </div>
     )
 
