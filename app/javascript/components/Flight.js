@@ -7,11 +7,11 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from '@material-ui/pickers';
-import { Grid, IconButton, TextField, Chip } from '@material-ui/core';
+import { Grid, IconButton, TextField, Chip, Typography } from '@material-ui/core';
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Search } from '@material-ui/icons';
+import { Save, Edit, Cancel } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 
@@ -21,10 +21,13 @@ class Flight extends React.Component {
     super(props)
 
     this.getAirports()
+    this.getFlight()
 
     let {
       flightUuid
     } = this.props
+
+    console.log(flightUuid)
 
     this.state = {
       airports: [],
@@ -37,10 +40,10 @@ class Flight extends React.Component {
         arriving_date: moment.utc().startOf('day').format(),
         departing_airport_uuid: "",
         arriving_airport_uuid: "",
+        departing_airport: {},
+        arriving_airport: {},
         can_transport: false
       },
-      selectedDepartingAirport: null,
-      selectedArrivingAirport: null,
       editMode: !flightUuid,
       isSaving: false
     }
@@ -57,13 +60,9 @@ class Flight extends React.Component {
           airports
         } = data
 
-        this.setAirports()
-
         this.setState({
           airports
         })
-
-        this.setAirports()
       },
       error: (data) => {
         console.log("error for airports")
@@ -71,29 +70,33 @@ class Flight extends React.Component {
     });
   }
 
-  setAirports() {
+  getFlight() {
     let {
-      airports,
-      flight
-    } = this.state
+      flightUuid
+    } = this.props
 
-    if (!flight.uuid || airports == []) {
+    if (!flightUuid) {
       return
     }
 
-    let selectedDepartingAirport = _.findLast(airports, (airport) => {
-      return flight.departing_airport_uuid === airport.uuid
-    })
+    $.ajax({
+      url: `/flights/${flightUuid}`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got the flight!")
+        let {
+          flight
+        } = data
 
-    let selectedArrivingAirport = _.findLast(airports, (airport) => {
-      return flight.arriving_airport_uuid === airport.uuid
-    })
-
-    this.setState({
-      selectedDepartingAirport,
-      selectedArrivingAirport
-    })
-
+        this.setState({
+          flight
+        })
+      },
+      error: (data) => {
+        console.log("error for flight")
+      }
+    });
   }
 
   saveFlight() {
@@ -103,8 +106,6 @@ class Flight extends React.Component {
 
     let {
       flight,
-      selectedDepartingAirport,
-      selectedArrivingAirport
     } = this.state
 
     let url = flight.uuid ? `/flights/${flight.uuid}` : '/flights'
@@ -115,8 +116,8 @@ class Flight extends React.Component {
       "can_transport": flight.can_transport,
       "departing_date": flight.departing_date,
       "arriving_date": flight.arriving_date,
-      "departing_airport_uuid": selectedDepartingAirport.uuid,
-      "arriving_airport_uuid": selectedArrivingAirport.uuid,
+      "departing_airport_uuid": flight.departing_airport.uuid,
+      "arriving_airport_uuid": flight.arriving_airport.uuid,
     }
 
     $.ajax({
@@ -148,14 +149,6 @@ class Flight extends React.Component {
     });
   }
 
-  searchFlightNumber() {
-    let {
-      flight
-    } = this.state
-
-
-  }
-
   renderArea() {
     let {
       editMode
@@ -166,12 +159,32 @@ class Flight extends React.Component {
 
   renderDisplayArea() {
     let {
-      flight
+      flight,
     } = this.state
 
     let displayArea = (
       <div>
-
+        <div>
+          <Typography
+            variant='h5'
+            style={{display: 'inline'}}>
+            {flight.number}
+          </Typography>
+          <IconButton
+            size='small'
+            onClick={this.setEditMode(true).bind(this)}>
+            <Edit
+              fontSize='small'/>
+          </IconButton>
+        </div>
+        <Typography
+          variant='h5'>
+          {flight.departing_date} - ({flight.departing_airport.code}) {flight.departing_airport.name}
+        </Typography>
+        <Typography
+          variant='h5'>
+          {flight.arriving_date} - ({flight.arriving_airport.code}) {flight.arriving_airport.name}
+        </Typography>
       </div>
     )
 
@@ -183,8 +196,6 @@ class Flight extends React.Component {
       airports,
       flight,
       isSaving,
-      selectedDepartingAirport,
-      selectedArrivingAirport
     } = this.state
 
     let editArea = (
@@ -200,22 +211,21 @@ class Flight extends React.Component {
           <IconButton
             size='small'
             disabled={isSaving}
-            onClick={this.searchFlightNumber.bind(this)}>
-            <Search
+            onClick={this.saveFlight.bind(this)}>
+            <Save
               fontSize='small'/>
           </IconButton>
           <IconButton
             size='small'
-            disabled={isSaving}
-            onClick={this.saveFlight.bind(this)}>
-            <Save
+            onClick={this.setEditMode(false).bind(this)}>
+            <Cancel
               fontSize='small'/>
           </IconButton>
         </div> <span
           style={{display:'block', height:45}}>
           <Autocomplete
             options={airports}
-            value={selectedDepartingAirport}
+            value={flight.departing_airport}
             onChange={this.saveDepartingAirport.bind(this)}
             getOptionLabel={(airport) => `${airport.code} - ${airport.name}`}
             filterSelectedOptions
@@ -232,7 +242,7 @@ class Flight extends React.Component {
           style={{display:'block', height:45}}>
           <Autocomplete
             options={airports}
-            value={selectedArrivingAirport}
+            value={flight.arriving_airport}
             onChange={this.saveArrivingAirport.bind(this)}
             getOptionLabel={(airport) => `${airport.code} - ${airport.name}`}
             filterSelectedOptions
@@ -283,6 +293,12 @@ class Flight extends React.Component {
     return editArea
   }
 
+  setEditMode = (editMode) => (e) => {
+    this.setState({
+      editMode: editMode,
+    })
+  }
+
   saveNumber(event) {
     let {
       flight
@@ -320,14 +336,26 @@ class Flight extends React.Component {
   }
 
   saveDepartingAirport(event, newValue) {
+    let {
+      flight
+    } = this.state
+
+    flight.departing_airport = newValue
+
     this.setState({
-      selectedDepartingAirport: newValue
+      flight
     })
   }
 
   saveArrivingAirport(event, newValue) {
+    let {
+      flight
+    } = this.state
+
+    flight.arriving_airport = newValue
+
     this.setState({
-      selectedArrivingAirport: newValue
+      flight
     })
   }
 

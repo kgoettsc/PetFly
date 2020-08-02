@@ -7,7 +7,9 @@ class FlightsController < ApplicationController
   end
 
   def show
+    flight = Flight.find_by(uuid: params[:id])
 
+    render json: {flight: JsonService.flight(flight)}
   end
 
   def create
@@ -28,7 +30,21 @@ class FlightsController < ApplicationController
   end
 
   def update
+    flight = Flight.find_by(uuid: params[:id])
 
+    departing_airport = Airport.find_by(uuid: params[:departing_airport_uuid])
+    arriving_airport = Airport.find_by(uuid: params[:arriving_airport_uuid])
+
+    flight.update!(
+      number: flight_params[:number],
+      can_transport: flight_params[:can_transport],
+      departing_at: flight_params[:departing_date],
+      arriving_at: flight_params[:arriving_date],
+      departing_airport: departing_airport,
+      arriving_airport: arriving_airport
+    )
+
+    render json: {flight: JsonService.flight(flight)}
   end
 
   def delete

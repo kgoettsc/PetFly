@@ -44,6 +44,6 @@ function FlightComponent() {
 
   return (
     <Flight
-      rescueUuid={flightUuid} />
+      flightUuid={flightUuid} />
   )
 }
