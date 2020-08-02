@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :organization_users
   has_many :organizations, through: :organization_users
 
+  has_many :flights
+
   validates_presence_of :email
   validates_uniqueness_of :email
 

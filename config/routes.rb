@@ -30,5 +30,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :flights do
+    collection do
+      get :search_by_number
+    end
+  end
+
   get '*path', to: 'home#index'
 end
