@@ -27,10 +27,9 @@ class Flight extends React.Component {
       flightUuid
     } = this.props
 
-    console.log(flightUuid)
-
     this.state = {
       airports: [],
+      dupeFlight: {},
       flight: {
         uuid: "",
         number: "",
@@ -40,8 +39,8 @@ class Flight extends React.Component {
         arriving_date: moment.utc().startOf('day').format(),
         departing_airport_uuid: "",
         arriving_airport_uuid: "",
-        departing_airport: {},
-        arriving_airport: {},
+        departing_airport: null,
+        arriving_airport: null,
         can_transport: false
       },
       editMode: !flightUuid,
@@ -90,7 +89,8 @@ class Flight extends React.Component {
         } = data
 
         this.setState({
-          flight
+          flight,
+          dupeFlight: _.cloneDeep(flight)
         })
       },
       error: (data) => {
@@ -137,7 +137,8 @@ class Flight extends React.Component {
         this.setState({
           isSaving: false,
           editMode: false,
-          flight
+          flight,
+          dupeFlight: _.cloneDeep(flight)
         })
       },
       error: (data) => {
@@ -179,11 +180,15 @@ class Flight extends React.Component {
         </div>
         <Typography
           variant='h5'>
-          {flight.departing_date} - ({flight.departing_airport.code}) {flight.departing_airport.name}
+          {flight.departing_airport &&
+            `${flight.departing_date} - (${flight.departing_airport.code}) ${flight.departing_airport.name}`
+          }
         </Typography>
         <Typography
           variant='h5'>
-          {flight.arriving_date} - ({flight.arriving_airport.code}) {flight.arriving_airport.name}
+          {flight.departing_airport &&
+            `${flight.departing_date} - (${flight.arriving_airport.code}) ${flight.arriving_airport.name}`
+          }
         </Typography>
       </div>
     )
@@ -215,12 +220,14 @@ class Flight extends React.Component {
             <Save
               fontSize='small'/>
           </IconButton>
-          <IconButton
-            size='small'
-            onClick={this.setEditMode(false).bind(this)}>
-            <Cancel
-              fontSize='small'/>
-          </IconButton>
+          {flight.uuid && (
+            <IconButton
+              size='small'
+              onClick={this.onCancel.bind(this)}>
+              <Cancel
+                fontSize='small'/>
+            </IconButton>
+          )}
         </div> <span
           style={{display:'block', height:45}}>
           <Autocomplete
@@ -291,6 +298,17 @@ class Flight extends React.Component {
     )
 
     return editArea
+  }
+
+  onCancel() {
+    let {
+      dupeFlight
+    } = this.state
+
+    this.setState({
+      flight: _.cloneDeep(dupeFlight),
+      editMode: false
+    })
   }
 
   setEditMode = (editMode) => (e) => {
