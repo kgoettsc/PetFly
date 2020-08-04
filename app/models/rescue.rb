@@ -14,6 +14,7 @@
 #  from_airports     :string           default([]), is an Array
 #  to_airports       :string           default([]), is an Array
 #  status            :string
+#  available_from    :date
 #
 
 class Rescue < ActiveRecord::Base

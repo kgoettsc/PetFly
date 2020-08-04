@@ -37,6 +37,7 @@ class JsonService
         :from_airports,
         :to_airports,
         :status,
+        :available_from,
         :uuid,
       ).merge(
         organization: organization(_rescue.organization),

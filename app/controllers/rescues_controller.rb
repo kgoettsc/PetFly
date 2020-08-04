@@ -50,6 +50,7 @@ class RescuesController < ApplicationController
       animal: animal,
       organization: organization,
       receiving_user: receiving_user,
+      available_from: params[:available_from],
       status: params[:status] || "active",
       from_airports: params[:from_airports] || [],
       to_airports: params[:to_airports] || []
@@ -75,6 +76,7 @@ class RescuesController < ApplicationController
     _rescue.update!(
       organization: organization,
       receiving_user: receiving_user,
+      available_from: params[:available_from],
       status: params[:status],
       from_airports: params[:from_airports] || [],
       to_airports: params[:to_airports] || [],
@@ -84,6 +86,6 @@ class RescuesController < ApplicationController
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
+    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
   end
 end

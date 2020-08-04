@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_133707) do
+ActiveRecord::Schema.define(version: 2020_08_04_205731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_133707) do
     t.string "from_airports", default: [], array: true
     t.string "to_airports", default: [], array: true
     t.string "status"
+    t.date "available_from"
     t.index ["animal_id"], name: "index_rescues_on_animal_id"
     t.index ["from_id"], name: "index_rescues_on_from_id"
     t.index ["organization_id"], name: "index_rescues_on_organization_id"

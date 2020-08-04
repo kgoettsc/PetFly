@@ -14,6 +14,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { Save, Edit, Cancel } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
+import * as DateUtils from '../packs/dateUtils.js'
 
 class Flight extends React.Component {
 
@@ -35,8 +36,6 @@ class Flight extends React.Component {
         number: "",
         departing_at: "",
         arriving_at: "",
-        departing_date: moment.utc().startOf('day').format(),
-        arriving_date: moment.utc().startOf('day').format(),
         departing_airport_uuid: "",
         arriving_airport_uuid: "",
         departing_airport: null,
@@ -262,8 +261,8 @@ class Flight extends React.Component {
             variant="inline"
             size='small'
             minDateMessage=""
-            label="With keyboard"
-            value={this.shiftTzDate(flight.departing_at)}
+            label="Date/Time of Departure"
+            value={DateUtils.shiftTzDate(flight.departing_at)}
             onChange={this.saveDepartingDate.bind(this)}
             onError={console.log}
             disablePast
@@ -292,8 +291,8 @@ class Flight extends React.Component {
             variant="inline"
             size='small'
             minDateMessage=""
-            label="With keyboard"
-            value={this.shiftTzDate(flight.arriving_at)}
+            label="Date/Time of Arrival"
+            value={DateUtils.shiftTzDate(flight.arriving_at)}
             onChange={this.saveArrivingDate.bind(this)}
             onError={console.log}
             disablePast
@@ -352,25 +351,12 @@ class Flight extends React.Component {
     })
   }
 
-  shiftTzDate(date) {
-    if (!date) {
-      return
-    }
-
-    return moment.utc(date).format('YYYY-MM-DDTHH:mm:ss')
-  }
-
-  shiftPickerDate(date) {
-    let newDate = moment.utc(moment(date).format('YYYY-MM-DDTHH:mm:ss'))
-    return newDate.format('YYYY-MM-DDTHH:mm:ss')
-  }
-
   saveDepartingDate(date) {
     let {
       flight
     } = this.state
 
-    flight.departing_at = this.shiftPickerDate(date)
+    flight.departing_at = DateUtils.shiftPickerDate(date)
 
     this.setState({
       flight
@@ -382,7 +368,7 @@ class Flight extends React.Component {
       flight
     } = this.state
 
-    flight.arriving_at = this.shiftPickerDate(date)
+    flight.arriving_at = DateUtils.shiftPickerDate(date)
 
     this.setState({
       flight
