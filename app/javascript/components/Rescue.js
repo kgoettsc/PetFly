@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from "prop-types"
 
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from '@material-ui/pickers';
+
 import _ from 'lodash'
 
 import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid, Chip, Input } from '@material-ui/core'
@@ -10,6 +16,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { Save, Edit, Cancel } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
+import * as DateUtils from '../packs/dateUtils.js'
 
 class Rescue extends React.Component {
   constructor(props) {
@@ -29,6 +36,7 @@ class Rescue extends React.Component {
         name: "",
         kind: "",
         breed: "",
+        available_from: "",
         status: "active",
         info_url: "",
         organization_uuid: "",
@@ -148,6 +156,7 @@ class Rescue extends React.Component {
       "kind": rescue.kind,
       "breed": rescue.breed,
       "status": rescue.status,
+      "available_from": rescue.available_from,
       "info_url": rescue.info_url,
       "from_airports": fromAirportCodes,
       "to_airports": toAirportCodes,
@@ -188,6 +197,7 @@ class Rescue extends React.Component {
     //rescue info
     rescue.uuid = rescueData.uuid
     rescue.status = rescueData.status
+    rescue.available_from = rescueData.available_from || ""
     rescue.from_airports = rescueData.from_airports
     rescue.to_airports = rescueData.to_airports
 
@@ -397,6 +407,23 @@ class Rescue extends React.Component {
           label='Breed'
           style={{width: '300px'}}
           value={rescue.breed}/>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              size='small'
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-available"
+              label="Date Available For Travel"
+              InputLabelProps={{shrink: rescue.available_from !== null}}
+              value={DateUtils.shiftTzDate(rescue.available_from)}
+              onChange={this.saveAvailableFrom.bind(this)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+        </MuiPickersUtilsProvider>
         <TextField
           required
           onChange={this.saveInfoUrl.bind(this)}
@@ -529,6 +556,17 @@ class Rescue extends React.Component {
     let {rescue} = this.state;
 
     rescue.breed = event.target.value
+
+    this.setState({
+      rescue
+    })
+  }
+
+  saveAvailableFrom(date) {
+    let {rescue} = this.state;
+
+    let parsedDate = DateUtils.shiftPickerDate(date)
+    rescue.available_from = parsedDate
 
     this.setState({
       rescue
