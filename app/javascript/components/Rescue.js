@@ -578,7 +578,7 @@ class Rescue extends React.Component {
   }
 
   render() {
-    let editArea = this.renderArea()
+    let dataArea = this.renderArea()
 
     return (
       <div>
@@ -588,7 +588,7 @@ class Rescue extends React.Component {
           <Grid
             item
             xs={6} >
-            {editArea}
+            {dataArea}
           </Grid>
           <Grid
             item
