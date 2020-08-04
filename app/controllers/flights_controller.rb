@@ -20,8 +20,8 @@ class FlightsController < ApplicationController
       user: current_user,
       number: flight_params[:number],
       can_transport: flight_params[:can_transport],
-      departing_at: flight_params[:departing_date],
-      arriving_at: flight_params[:arriving_date],
+      departing_at: flight_params[:departing_at],
+      arriving_at: flight_params[:arriving_at],
       departing_airport: departing_airport,
       arriving_airport: arriving_airport
     )
