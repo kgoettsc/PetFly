@@ -11,7 +11,7 @@
 #  updated_at           :datetime         not null
 #  departing_at         :datetime         not null
 #  arriving_at          :datetime         not null
-#  archived_at          :datetime         not null
+#  archived_at          :datetime
 #  departing_airport_id :bigint
 #  arriving_airport_id  :bigint
 #
