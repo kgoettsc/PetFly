@@ -38,8 +38,8 @@ class FlightsController < ApplicationController
     flight.update!(
       number: flight_params[:number],
       can_transport: flight_params[:can_transport],
-      departing_at: flight_params[:departing_date],
-      arriving_at: flight_params[:arriving_date],
+      departing_at: flight_params[:departing_at],
+      arriving_at: flight_params[:arriving_at],
       departing_airport: departing_airport,
       arriving_airport: arriving_airport
     )
@@ -48,7 +48,11 @@ class FlightsController < ApplicationController
   end
 
   def delete
+    flight = Flight.find_by(uuid: params[:id])
 
+    flight.archive!
+
+    render json: {flight: JsonService.flight(flight)}
   end
 
   def search_by_number
@@ -58,6 +62,6 @@ class FlightsController < ApplicationController
   end
 
   def flight_params
-    params.permit(:number, :can_transport, :departing_date, :arriving_date, :departing_airport_uuid, :arriving_airport_uuid)
+    params.permit(:number, :can_transport, :departing_at, :arriving_at, :departing_airport_uuid, :arriving_airport_uuid)
   end
 end

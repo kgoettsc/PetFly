@@ -37,4 +37,8 @@ class Flight < ActiveRecord::Base
     arriving_at.to_date
   end
 
+  def archive(archived_at = DateTime.now)
+    update!(archived_at: archived_at)
+  end
+
 end

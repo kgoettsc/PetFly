@@ -5,7 +5,8 @@ import moment from 'moment'
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker
+  KeyboardDatePicker,
+  KeyboardDateTimePicker
 } from '@material-ui/pickers';
 import { Grid, IconButton, TextField, Chip, Typography } from '@material-ui/core';
 
@@ -44,7 +45,7 @@ class Flight extends React.Component {
         can_transport: false
       },
       editMode: !flightUuid,
-      isSaving: false
+      isSaving: false,
     }
   }
 
@@ -90,7 +91,7 @@ class Flight extends React.Component {
 
         this.setState({
           flight,
-          dupeFlight: _.cloneDeep(flight)
+          dupeFlight: _.cloneDeep(flight),
         })
       },
       error: (data) => {
@@ -114,8 +115,8 @@ class Flight extends React.Component {
     let params = {
       "number": flight.number,
       "can_transport": flight.can_transport,
-      "departing_date": flight.departing_date,
-      "arriving_date": flight.arriving_date,
+      "departing_at": flight.departing_at,
+      "arriving_at": flight.arriving_at,
       "departing_airport_uuid": flight.departing_airport.uuid,
       "arriving_airport_uuid": flight.arriving_airport.uuid,
     }
@@ -186,8 +187,8 @@ class Flight extends React.Component {
           <Typography
             variant='h5'
             style={{paddingLeft: '10px'}}>
-            {flight.departing_date &&
-              `${moment(flight.departing_date).format('LLLL')}`
+            {flight.departing_at &&
+              `${moment(flight.departing_at).format('LLLL')}`
             }
           </Typography>
           <Typography
@@ -206,8 +207,8 @@ class Flight extends React.Component {
           <Typography
             variant='h5'
             style={{paddingLeft: '10px'}}>
-            {flight.arriving_date &&
-              `${moment(flight.arriving_date).format('LLLL')}`
+            {flight.arriving_at &&
+              `${moment(flight.arriving_at).format('LLLL')}`
             }
           </Typography>
           <Typography
@@ -256,7 +257,21 @@ class Flight extends React.Component {
                 fontSize='small'/>
             </IconButton>
           )}
-        </div> <span
+        </div>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDateTimePicker
+            variant="inline"
+            size='small'
+            minDateMessage=""
+            label="With keyboard"
+            value={this.shiftTzDate(flight.departing_at)}
+            onChange={this.saveDepartingDate.bind(this)}
+            onError={console.log}
+            disablePast
+            format="yyyy/MM/dd HH:mm"
+          />
+        </MuiPickersUtilsProvider>
+        <span
           style={{display:'block', height:45}}>
           <Autocomplete
             options={airports}
@@ -273,6 +288,19 @@ class Flight extends React.Component {
             )}
           />
         </span>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDateTimePicker
+            variant="inline"
+            size='small'
+            minDateMessage=""
+            label="With keyboard"
+            value={this.shiftTzDate(flight.arriving_at)}
+            onChange={this.saveArrivingDate.bind(this)}
+            onError={console.log}
+            disablePast
+            format="yyyy/MM/dd HH:mm"
+          />
+        </MuiPickersUtilsProvider>
         <span
           style={{display:'block', height:45}}>
           <Autocomplete
@@ -290,38 +318,6 @@ class Flight extends React.Component {
             )}
           />
         </span>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            size='small'
-            format="MM/dd/yyyy"
-            margin="normal"
-            label="Departing Date"
-            InputLabelProps={{shrink: flight.departing_date !== null}}
-            value={flight.departing_date}
-            onChange={this.saveDepartingDate.bind(this)}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-          />
-        </MuiPickersUtilsProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            size='small'
-            format="MM/dd/yyyy"
-            margin="normal"
-            label="Arriving Date"
-            InputLabelProps={{shrink: flight.arriving_date !== null}}
-            value={flight.arriving_date}
-            onChange={this.saveArrivingDate.bind(this)}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-          />
-        </MuiPickersUtilsProvider>
       </div>
     )
 
@@ -357,12 +353,25 @@ class Flight extends React.Component {
     })
   }
 
+  shiftTzDate(date) {
+    if (!date) {
+      return
+    }
+
+    return moment.utc(date).format('YYYY-MM-DDTHH:mm:ss')
+  }
+
+  shiftPickerDate(date) {
+    let newDate = moment.utc(moment(date).format('YYYY-MM-DDTHH:mm:ss'))
+    return newDate.format('YYYY-MM-DDTHH:mm:ss')
+  }
+
   saveDepartingDate(date) {
     let {
       flight
     } = this.state
 
-    flight.departing_date = moment.utc(date)
+    flight.departing_at = this.shiftPickerDate(date)
 
     this.setState({
       flight
@@ -374,7 +383,7 @@ class Flight extends React.Component {
       flight
     } = this.state
 
-    flight.arriving_date = moment.utc(date)
+    flight.arriving_at = this.shiftPickerDate(date)
 
     this.setState({
       flight
