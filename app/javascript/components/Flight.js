@@ -5,10 +5,9 @@ import moment from 'moment'
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker,
   KeyboardDateTimePicker
 } from '@material-ui/pickers';
-import { Grid, IconButton, TextField, Chip, Typography } from '@material-ui/core';
+import { Grid, IconButton, TextField, Typography } from '@material-ui/core';
 
 import { Autocomplete } from '@material-ui/lab';
 
