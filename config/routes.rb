@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :flights do
     collection do
+      get :active_by_user
       get :search_by_number
     end
   end

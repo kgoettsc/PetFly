@@ -60,6 +60,8 @@ class JsonService
     end
 
     def airport(_airport)
+      return {} if _airport.blank?
+
       _airport.slice(
         :code,
         :name,

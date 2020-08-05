@@ -24,8 +24,8 @@ class Home extends React.Component {
           <Button
             size="small"
             component={Link}
-            to="/addFlight">
-            Add Flight
+            to="/flights">
+            See Flights
           </Button>
         </Typography>
         <Typography
