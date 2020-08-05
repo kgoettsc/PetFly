@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import moment from 'moment'
 
@@ -7,7 +8,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDateTimePicker
 } from '@material-ui/pickers';
-import { Grid, IconButton, TextField, Typography } from '@material-ui/core';
+import { Grid, IconButton, TextField, Typography, Button } from '@material-ui/core';
 
 import { Autocomplete } from '@material-ui/lab';
 
@@ -23,6 +24,7 @@ class Flight extends React.Component {
 
     this.getAirports()
     this.getFlight()
+    this.getMatches()
 
     let {
       flightUuid
@@ -44,6 +46,7 @@ class Flight extends React.Component {
       },
       editMode: !flightUuid,
       isSaving: false,
+      matches: [],
     }
   }
 
@@ -64,6 +67,35 @@ class Flight extends React.Component {
       },
       error: (data) => {
         console.log("error for airports")
+      }
+    });
+  }
+
+  getMatches() {
+    let {
+      flightUuid
+    } = this.props
+
+    if (!flightUuid) {
+      return
+    }
+
+    $.ajax({
+      url: `/flights/${flightUuid}/matches`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got the matches!")
+        let {
+          matches
+        } = data
+
+        this.setState({
+          matches,
+        })
+      },
+      error: (data) => {
+        console.log("error for matches")
       }
     });
   }
@@ -399,8 +431,36 @@ class Flight extends React.Component {
     })
   }
 
+  renderMatchArea(){
+    let {
+      matches
+    } = this.state
+
+    let displayList = matches.map((rescue, index) => {
+      let {
+        animal,
+        organization
+      } = rescue
+
+      return (
+        <span
+          key={`rescues-${index}`}>
+          <Button
+            size="small"
+            component={Link}
+            to={"/rescue/" + rescue.uuid} >
+            {animal.name} - ({organization.name})
+          </Button>
+        </span>
+      )
+    })
+
+    return displayList
+  }
+
   render() {
     let dataArea = this.renderArea()
+    let matchArea = this.renderMatchArea()
 
     return (
       <div>
@@ -412,6 +472,12 @@ class Flight extends React.Component {
             item
             xs={6} >
             {dataArea}
+          </Grid>
+          <Grid
+            item
+            xs={6} >
+            <h2>Matches</h2>
+            {matchArea}
           </Grid>
         </Grid>
       </div>

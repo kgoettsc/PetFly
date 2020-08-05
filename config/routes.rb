@@ -28,11 +28,18 @@ Rails.application.routes.draw do
       get :active_by_receiving_user
       get :active
     end
+    member do
+      get :matches
+    end
   end
 
   resources :flights do
     collection do
+      get :active_by_user
       get :search_by_number
+    end
+    member do
+      get :matches
     end
   end
 

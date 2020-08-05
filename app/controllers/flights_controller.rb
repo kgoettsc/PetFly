@@ -61,6 +61,23 @@ class FlightsController < ApplicationController
     render json: {flights: searched_flights}
   end
 
+  def active_by_user
+    flights = Flight.active
+                    .where(user: current_user)
+                    .order(:created_at)
+                    .limit(50)
+
+    render json: {flights: JsonService.flights(flights)}
+  end
+
+  def matches
+    flight = Flight.find_by(uuid: params[:id])
+
+    matches = MatchService.flight_matches(flight)
+
+    render json: {matches: JsonService.rescues(matches)}
+  end
+
   def flight_params
     params.permit(:number, :can_transport, :departing_at, :arriving_at, :departing_airport_uuid, :arriving_airport_uuid)
   end

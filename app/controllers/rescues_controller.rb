@@ -85,6 +85,14 @@ class RescuesController < ApplicationController
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
 
+  def matches
+    _rescue = Rescue.find_by(uuid: params[:id])
+
+    matches = MatchService.rescue_matches(_rescue)
+
+    render json: {matches: JsonService.flights(matches)}
+  end
+
   def rescue_params
     params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
   end
