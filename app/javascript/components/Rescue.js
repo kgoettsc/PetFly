@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from "prop-types"
+import { Link } from 'react-router-dom';
 
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -9,7 +10,7 @@ import {
 
 import _ from 'lodash'
 
-import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid, Chip, Input } from '@material-ui/core'
+import { TextField, IconButton, Select, MenuItem, Typography, FormControl, InputLabel, Grid, Chip, Input, Button } from '@material-ui/core'
 
 import { Autocomplete } from '@material-ui/lab';
 
@@ -29,6 +30,7 @@ class Rescue extends React.Component {
     this.getOrganizations()
     this.getAirports()
     this.getRescue()
+    this.getMatches()
 
     this.state = {
       rescue: {
@@ -50,8 +52,38 @@ class Rescue extends React.Component {
       isSaving: false,
       organizations: [],
       airports: [],
-      editMode: !rescueUuid
+      editMode: !rescueUuid,
+      matches: []
     }
+  }
+
+  getMatches() {
+    let {
+      rescueUuid
+    } = this.props
+
+    if (!rescueUuid) {
+      return
+    }
+
+    $.ajax({
+      url: `/rescues/${rescueUuid}/matches`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got the matches!")
+        let {
+          matches
+        } = data
+
+        this.setState({
+          matches,
+        })
+      },
+      error: (data) => {
+        console.log("error for matches")
+      }
+    });
   }
 
   getOrganizations() {
@@ -615,8 +647,36 @@ class Rescue extends React.Component {
     })
   }
 
+  renderMatchArea(){
+    let {
+      matches
+    } = this.state
+
+    let displayList = matches.map((flight, index) => {
+      let {
+        departing_airport,
+        arriving_airport
+      } = flight
+
+      return (
+        <span
+          key={`flights-${index}`}>
+          <Button
+            size="small"
+            component={Link}
+            to={"/flight/" + flight.uuid} >
+            <b>{flight.number}</b>: {departing_airport.code} => {arriving_airport.code}
+          </Button>
+        </span>
+      )
+    })
+
+    return displayList
+  }
+
   render() {
     let dataArea = this.renderArea()
+    let matchArea = this.renderMatchArea()
 
     return (
       <div>
@@ -631,6 +691,8 @@ class Rescue extends React.Component {
           <Grid
             item
             xs={6} >
+            <h2>Flight Matches</h2>
+            {matchArea}
           </Grid>
         </Grid>
       </div>

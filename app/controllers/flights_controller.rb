@@ -70,6 +70,14 @@ class FlightsController < ApplicationController
     render json: {flights: JsonService.flights(flights)}
   end
 
+  def matches
+    flight = Flight.find_by(uuid: params[:id])
+
+    matches = MatchService.flight_matches(flight)
+
+    render json: {matches: JsonService.rescues(matches)}
+  end
+
   def flight_params
     params.permit(:number, :can_transport, :departing_at, :arriving_at, :departing_airport_uuid, :arriving_airport_uuid)
   end
