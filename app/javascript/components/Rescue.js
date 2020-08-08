@@ -14,7 +14,7 @@ import { TextField, IconButton, Select, MenuItem, Typography, FormControl, Input
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Edit, Cancel } from '@material-ui/icons';
+import { Save, Edit, Cancel, Send, Check } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 import * as DateUtils from '../packs/dateUtils.js'
@@ -53,7 +53,8 @@ class Rescue extends React.Component {
       organizations: [],
       airports: [],
       editMode: !rescueUuid,
-      matches: []
+      matches: [],
+      rescueFlightMap: {}
     }
   }
 
@@ -79,11 +80,103 @@ class Rescue extends React.Component {
         this.setState({
           matches,
         })
+
+        this.getRescueFlights()
       },
       error: (data) => {
         console.log("error for matches")
       }
     });
+  }
+
+  getRescueFlights() {
+    let {
+      rescueUuid,
+    } = this.props
+
+    let {
+      matches,
+    } = this.state
+
+    if (!rescueUuid || !matches || matches == []) {
+      return
+    }
+    let flightUuids = matches.map((flight) => {
+      return flight.uuid
+    })
+
+    $.ajax({
+      url: `/rescue_flights/by_rescue_and_flights`,
+      method: 'GET',
+      data: {
+        rescue_uuid: rescueUuid,
+        flight_uuids: flightUuids
+      },
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("got the rescue_flights!")
+        let {
+          rescue_flights
+        } = data
+
+        this.setState({
+          rescueFlightMap: this.parseRescueFlights(rescue_flights),
+        })
+      },
+      error: (data) => {
+        console.log("error for rescue_flights")
+      }
+    });
+  }
+
+  requestRescueFlight(flightUuid) {
+    console.log(`requesting for ${flightUuid}`)
+    let {
+      rescueUuid,
+    } = this.props
+
+    $.ajax({
+      url: `/rescue_flights/create_as_rescue`,
+      method: 'POST',
+      data: JSON.stringify({
+        rescue_uuid: rescueUuid,
+        flight_uuid: flightUuid
+      }),
+      contentType: 'application/json',
+      headers: {
+        'X-CSRF-Token': ApiUtils.getCsrfToken(document),
+      },
+      success: (data) => {
+        console.log("requested rescue flight!")
+        let {
+          rescueFlightMap
+        } = this.state
+
+        let {
+          rescue_flight
+        } = data
+
+        rescueFlightMap[rescue_flight.flight_uuid] = rescue_flight
+
+        this.setState({
+          rescueFlightMap
+        })
+      },
+      error: (data) => {
+        console.log("error for requesting rescue flight")
+        console.log(data)
+      }
+    });
+  }
+
+  parseRescueFlights(rescueFlights) {
+    let rescueFlightMap = {}
+
+    rescueFlights.forEach((rescueFlight) => {
+      rescueFlightMap[rescueFlight.flight_uuid] = rescueFlight
+    })
+
+    return rescueFlightMap
   }
 
   getOrganizations() {
@@ -649,7 +742,8 @@ class Rescue extends React.Component {
 
   renderMatchArea(){
     let {
-      matches
+      matches,
+      rescueFlightMap,
     } = this.state
 
     let displayList = matches.map((flight, index) => {
@@ -657,6 +751,24 @@ class Rescue extends React.Component {
         departing_airport,
         arriving_airport
       } = flight
+
+      let rescueFlight = rescueFlightMap[flight.uuid]
+      let rescueFlightbutton = rescueFlight ? (
+        <Chip
+          icon={<Check />}
+          label="Requested"
+          color="primary"
+        />
+      ) : (
+        <Button
+          size="small"
+          variant="contained"
+          color="secondary"
+          onClick={this.requestRescueFlight.bind(this, flight.uuid)}
+          endIcon={<Send fontSize='small' />}>
+          Request
+        </Button>
+      )
 
       return (
         <span
@@ -667,6 +779,7 @@ class Rescue extends React.Component {
             to={"/flight/" + flight.uuid} >
             <b>{flight.number}</b>: {departing_airport.code} => {arriving_airport.code}
           </Button>
+          {rescueFlightbutton}
         </span>
       )
     })

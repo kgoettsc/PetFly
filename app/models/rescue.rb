@@ -27,6 +27,7 @@ class Rescue < ActiveRecord::Base
   belongs_to :to, class_name: 'Location', optional: true
 
   has_many :rescue_flights
+  has_one :rescue_flight, -> { active }
 
   scope :active, -> {where(status: 'active')}
 end

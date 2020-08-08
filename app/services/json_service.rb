@@ -42,7 +42,29 @@ class JsonService
       ).merge(
         organization: organization(_rescue.organization),
         animal: animal(_rescue.animal),
-        receiving_user: user(_rescue.receiving_user)
+        receiving_user: user(_rescue.receiving_user),
+      )
+    end
+
+    def rescue_flights(_rescue_flights)
+      _rescue_flights.map{|rf| rescue_flight(rf)}
+    end
+
+    def rescue_flight(_rescue_flight)
+      _flight = _rescue_flight.flight
+      _rescue = _rescue_flight.rescue
+
+      _rescue_flight.slice(
+        :uuid,
+        :status,
+        :requested_at,
+        :approved_at,
+        :cancelled_at,
+      ).merge(
+        rescue_approver: user(_rescue_flight.rescue_approver),
+        flight_approver: user(_rescue_flight.flight_approver),
+        rescue_uuid: _rescue.uuid,
+        flight_uuid: _flight.uuid,
       )
     end
 

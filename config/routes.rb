@@ -43,5 +43,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :rescue_flights do
+    collection do
+      get :by_rescue_and_flights
+      get :by_flight_and_rescues
+      post :create_as_rescue
+    end
+  end
+
   get '*path', to: 'home#index'
 end
