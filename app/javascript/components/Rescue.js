@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from "prop-types"
 import { Link } from 'react-router-dom';
 
+import FlightCard from "../components/FlightCard";
+
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -125,46 +127,6 @@ class Rescue extends React.Component {
       },
       error: (data) => {
         console.log("error for rescue_flights")
-      }
-    });
-  }
-
-  requestRescueFlight(flightUuid) {
-    console.log(`requesting for ${flightUuid}`)
-    let {
-      rescueUuid,
-    } = this.props
-
-    $.ajax({
-      url: `/rescue_flights/create_as_rescue`,
-      method: 'POST',
-      data: JSON.stringify({
-        rescue_uuid: rescueUuid,
-        flight_uuid: flightUuid
-      }),
-      contentType: 'application/json',
-      headers: {
-        'X-CSRF-Token': ApiUtils.getCsrfToken(document),
-      },
-      success: (data) => {
-        console.log("requested rescue flight!")
-        let {
-          rescueFlightMap
-        } = this.state
-
-        let {
-          rescue_flight
-        } = data
-
-        rescueFlightMap[rescue_flight.flight_uuid] = rescue_flight
-
-        this.setState({
-          rescueFlightMap
-        })
-      },
-      error: (data) => {
-        console.log("error for requesting rescue flight")
-        console.log(data)
       }
     });
   }
@@ -385,7 +347,9 @@ class Rescue extends React.Component {
 
   renderDisplayArea() {
     let {
-      rescue
+      rescue,
+      selectedFromAirports,
+      selectedToAirports
     } = this.state
 
     let displayArea = (
@@ -419,6 +383,34 @@ class Rescue extends React.Component {
           style={{display:'block', height:45}}>
           <b>Travel Need Status: </b> {this.renderStatus(rescue.status)}
         </span>
+        <Typography
+          variant='h5'>
+          Drop Off Airports:
+            <br/>
+            {selectedFromAirports.map((airport, index) => {
+              return (
+                <div
+                  key={`fromAirport-${index}`}
+                  style={{paddingLeft: '15px'}}>
+                  <b>{airport.code}</b> - {airport.name}
+                </div>
+              )
+            })}
+        </Typography>
+        <Typography
+          variant='h5'>
+          Pick Up Airports:
+            <br/>
+            {selectedToAirports.map((airport, index) => {
+              return (
+                <div
+                  key={`toAirport-${index}`}
+                  style={{paddingLeft: '15px'}}>
+                  <b>{airport.code}</b> - {airport.name}
+                </div>
+              )
+            })}
+        </Typography>
         {rescue.info_url &&
           <Typography
             variant='h5'>
@@ -742,49 +734,41 @@ class Rescue extends React.Component {
 
   renderMatchArea(){
     let {
+      rescue,
       matches,
       rescueFlightMap,
     } = this.state
 
     let displayList = matches.map((flight, index) => {
-      let {
-        departing_airport,
-        arriving_airport
-      } = flight
-
       let rescueFlight = rescueFlightMap[flight.uuid]
-      let rescueFlightbutton = rescueFlight ? (
-        <Chip
-          icon={<Check />}
-          label="Requested"
-          color="primary"
-        />
-      ) : (
-        <Button
-          size="small"
-          variant="contained"
-          color="secondary"
-          onClick={this.requestRescueFlight.bind(this, flight.uuid)}
-          endIcon={<Send fontSize='small' />}>
-          Request
-        </Button>
-      )
 
       return (
-        <span
-          key={`flights-${index}`}>
-          <Button
-            size="small"
-            component={Link}
-            to={"/flight/" + flight.uuid} >
-            <b>{flight.number}</b>: {departing_airport.code} => {arriving_airport.code}
-          </Button>
-          {rescueFlightbutton}
-        </span>
+        <FlightCard
+          key={`flightcard-${index}`}
+          flight={flight}
+          rescue={rescue}
+          rescueFlight={rescueFlight}
+          onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )
     })
 
-    return displayList
+    return (
+      <div>
+        {displayList}
+      </div>
+    )
+  }
+
+  onRescueFlightComplete(rescue_flight) {
+    let {
+      rescueFlightMap
+    } = this.state
+
+    rescueFlightMap[rescue_flight.flight_uuid] = rescue_flight
+
+    this.setState({
+      rescueFlightMap
+    })
   }
 
   render() {

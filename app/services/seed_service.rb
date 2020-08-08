@@ -75,8 +75,8 @@ class SeedService
           flight_date = generate_random_date + rand(1440).minutes
 
           rand_rescue = Rescue.offset(rand(Rescue.count)).first
-          rescue_from = rand_rescue.from_airports.sample
-          rescue_to = rand_rescue.to_airports.sample
+          rescue_from = rand_rescue.from_airports[rand(rand_rescue.from_airports.count)]
+          rescue_to = rand_rescue.to_airports[rand(rand_rescue.to_airports.count)]
 
           Flight.create(
             user: user,
