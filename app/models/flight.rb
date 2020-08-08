@@ -28,6 +28,7 @@ class Flight < ActiveRecord::Base
   belongs_to :arriving_airport, class_name: 'Airport', optional: true
 
   has_many :rescue_flights
+  has_one :rescue_flight, -> { active }
 
   def departing_date
     departing_at.to_date

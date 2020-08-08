@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     end
     member do
       get :matches
-      post :request_match
     end
   end
 
@@ -41,7 +40,6 @@ Rails.application.routes.draw do
     end
     member do
       get :matches
-      post :request_match
     end
   end
 
