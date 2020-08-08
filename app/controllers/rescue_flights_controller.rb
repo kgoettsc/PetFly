@@ -6,9 +6,8 @@ class RescueFlightsController < ApplicationController
 
   def by_rescue_and_flights
     _rescue = Rescue.find_by(uuid: flight_rescue_params[:rescue_uuid])
-    flights = Flight.where(uuid: flight_rescue_params[:flight_uuids])
 
-    rescue_flights = RescueFlight.active.where(rescue: _rescue, flight: flights)
+    rescue_flights = RescueFlight.active.where(rescue: _rescue)
 
     render json: {rescue_flights: JsonService.rescue_flights(rescue_flights)}
   end

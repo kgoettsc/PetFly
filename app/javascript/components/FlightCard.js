@@ -18,8 +18,6 @@ class FlightCard extends React.Component {
       onRescueFlightComplete
     } = this.props
 
-    console.log(`requesting for ${flight.uuid}`)
-
     $.ajax({
       url: `/rescue_flights/create_as_rescue`,
       method: 'POST',
@@ -49,7 +47,6 @@ class FlightCard extends React.Component {
   render(){
     let {
       flight,
-      rescue,
       rescueFlight
     } = this.props
 
@@ -58,7 +55,9 @@ class FlightCard extends React.Component {
       arriving_airport
     } = flight
 
-    let rescueFlightbutton = rescueFlight ? (
+    let requested = rescueFlight && rescueFlight.status == "requested"
+
+    let rescueFlightbutton = requested ? (
       <Chip
         icon={<Check />}
         label="Requested"

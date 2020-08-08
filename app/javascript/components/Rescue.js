@@ -32,6 +32,7 @@ class Rescue extends React.Component {
     this.getOrganizations()
     this.getAirports()
     this.getRescue()
+    this.getRescueFlights()
     this.getMatches()
 
     this.state = {
@@ -56,7 +57,8 @@ class Rescue extends React.Component {
       airports: [],
       editMode: !rescueUuid,
       matches: [],
-      rescueFlightMap: {}
+      rescueFlightMap: {},
+      rescueFlights: []
     }
   }
 
@@ -83,7 +85,6 @@ class Rescue extends React.Component {
           matches,
         })
 
-        this.getRescueFlights()
       },
       error: (data) => {
         console.log("error for matches")
@@ -96,23 +97,15 @@ class Rescue extends React.Component {
       rescueUuid,
     } = this.props
 
-    let {
-      matches,
-    } = this.state
-
-    if (!rescueUuid || !matches || matches == []) {
+    if (!rescueUuid) {
       return
     }
-    let flightUuids = matches.map((flight) => {
-      return flight.uuid
-    })
 
     $.ajax({
       url: `/rescue_flights/by_rescue_and_flights`,
       method: 'GET',
       data: {
         rescue_uuid: rescueUuid,
-        flight_uuids: flightUuids
       },
       contentType: 'application/json',
       success: (data) => {
@@ -122,6 +115,7 @@ class Rescue extends React.Component {
         } = data
 
         this.setState({
+          rescueFlights: rescue_flights,
           rescueFlightMap: this.parseRescueFlights(rescue_flights),
         })
       },
@@ -734,19 +728,16 @@ class Rescue extends React.Component {
 
   renderMatchArea(){
     let {
-      rescue,
-      matches,
-      rescueFlightMap,
+      rescueFlights
     } = this.state
 
-    let displayList = matches.map((flight, index) => {
-      let rescueFlight = rescueFlightMap[flight.uuid]
+    let displayList = rescueFlights.map((rescueFlight, index) => {
 
       return (
         <FlightCard
           key={`flightcard-${index}`}
-          flight={flight}
-          rescue={rescue}
+          flight={rescueFlight.flight}
+          rescue={rescueFlight.rescue}
           rescueFlight={rescueFlight}
           onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )

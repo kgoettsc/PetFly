@@ -63,6 +63,8 @@ class JsonService
       ).merge(
         rescue_approver: user(_rescue_flight.rescue_approver),
         flight_approver: user(_rescue_flight.flight_approver),
+        flight: JsonService.flight(_flight),
+        rescue: JsonService.rescue_json(_rescue),
         rescue_uuid: _rescue.uuid,
         flight_uuid: _flight.uuid,
       )
