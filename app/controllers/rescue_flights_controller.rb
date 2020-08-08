@@ -33,11 +33,9 @@ class RescueFlightsController < ApplicationController
 
     success = rescue_flight.request_as_rescue!(current_user)
 
-    if success == false
-      render status: :bad_request
-    end
+    status = success == false ? :bad_request : :ok
 
-    render json: {rescue_flight: JsonService.rescue_flight(rescue_flight.reload)}
+    render json: {rescue_flight: JsonService.rescue_flight(rescue_flight.reload)}, status: status
   end
 
   def flight_rescue_params

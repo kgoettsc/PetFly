@@ -14,7 +14,7 @@ import { TextField, IconButton, Select, MenuItem, Typography, FormControl, Input
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Edit, Cancel } from '@material-ui/icons';
+import { Save, Edit, Cancel, Send, Check } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 import * as DateUtils from '../packs/dateUtils.js'
@@ -54,7 +54,6 @@ class Rescue extends React.Component {
       airports: [],
       editMode: !rescueUuid,
       matches: [],
-      rescueFlights: [],
       rescueFlightMap: {}
     }
   }
@@ -755,15 +754,20 @@ class Rescue extends React.Component {
 
       let rescueFlight = rescueFlightMap[flight.uuid]
       let rescueFlightbutton = rescueFlight ? (
-        <div>
-          {rescueFlight.uuid}
-        </div>
+        <Chip
+          icon={<Check />}
+          label="Requested"
+          color="primary"
+        />
       ) : (
-        <div
+        <Button
+          size="small"
+          variant="contained"
+          color="secondary"
           onClick={this.requestRescueFlight.bind(this, flight.uuid)}
-          style={{cursor: 'pointer'}}>
-          Click me to request
-        </div>
+          endIcon={<Send fontSize='small' />}>
+          Request
+        </Button>
       )
 
       return (
