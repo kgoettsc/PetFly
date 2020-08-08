@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
     member do
       get :matches
+      post :request_match
     end
   end
 
@@ -40,6 +41,15 @@ Rails.application.routes.draw do
     end
     member do
       get :matches
+      post :request_match
+    end
+  end
+
+  resources :rescue_flights do
+    collection do
+      get :by_rescue_and_flights
+      get :by_flight_and_rescues
+      post :create_as_rescue
     end
   end
 

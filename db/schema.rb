@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_205731) do
+ActiveRecord::Schema.define(version: 2020_08_05_142656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,15 @@ ActiveRecord::Schema.define(version: 2020_08_04_205731) do
     t.bigint "flight_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rescue_approver_id"
+    t.bigint "flight_approver_id"
+    t.string "status"
+    t.datetime "requested_at"
+    t.datetime "approved_at"
+    t.datetime "cancelled_at"
+    t.index ["flight_approver_id"], name: "index_rescue_flights_on_flight_approver_id"
     t.index ["flight_id"], name: "index_rescue_flights_on_flight_id"
+    t.index ["rescue_approver_id"], name: "index_rescue_flights_on_rescue_approver_id"
     t.index ["rescue_id"], name: "index_rescue_flights_on_rescue_id"
   end
 
