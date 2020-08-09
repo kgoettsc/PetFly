@@ -53,14 +53,15 @@ class SeedService
           rand_airports = Airport.offset(rand(Airport.count)).sample(rand(2)+1)
           other_rand_airports = Airport.where.not(id: rand_airports.map(&:id)).offset(rand(Airport.count-1)).sample(rand(2)+1)
 
-          Rescue.create(
+          _rescue = Rescue.create(
             organization: organization,
             animal: animal,
-            from_airports: rand_airports.map(&:code),
-            to_airports: other_rand_airports.map(&:code),
             status: 'active',
             available_from: available_from
           )
+
+          _rescue.departing_airports = rand_airports
+          _rescue.arriving = other_rand_airports
         end
       end
 

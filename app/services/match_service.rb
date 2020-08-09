@@ -2,21 +2,24 @@ class MatchService
   class << self
     def flight_matches(flight)
       rescues = Rescue.
+                  joins('LEFT JOIN rescue_airports as departing_rescue_airports on rescues.id=departing_rescue_airports.rescue_id').
+                  joins('LEFT JOIN rescue_airports as arriving_rescue_airports on rescues.id=arriving_rescue_airports.rescue_id').
                   where(status: 'active').
                   where("available_from <= ?", flight.departing_at).
-                  where("? = ANY(from_airports)", flight.departing_airport.code).
-                  where("? = ANY(to_airports)", flight.arriving_airport.code)
+                  where(departing_rescue_airports: {airport_id: flight.departing_airport_id}).
+                  where(arriving_rescue_airports: {airport_id: flight.arriving_airport_id}).
+                  uniq
 
       rescues
     end
 
     def rescue_matches(_rescue)
-      departing_airport_ids = Airport.where(code: _rescue.from_airports).select(:id).map(&:id)
-      arriving_airport_ids = Airport.where(code: _rescue.to_airports).select(:id).map(&:id)
-
       flights = Flight.active.
-                  where("departing_airport_id in (?)", departing_airport_ids).
-                  where("arriving_airport_id in (?)", arriving_airport_ids)
+                  joins('LEFT JOIN rescue_airports as departing_rescue_airports on flights.departing_airport_id = departing_rescue_airports.airport_id').
+                  joins('LEFT JOIN rescue_airports as arriving_rescue_airports on flights.arriving_airport_id = arriving_rescue_airports.airport_id').
+                  where(departing_rescue_airports: {rescue_id: _rescue.id}).
+                  where(arriving_rescue_airports: {rescue_id: _rescue.id}).
+                  uniq
 
       flights
     end

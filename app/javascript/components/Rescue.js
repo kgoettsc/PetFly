@@ -171,13 +171,6 @@ class Rescue extends React.Component {
     let url = rescue.uuid ? `/rescues/${rescue.uuid}` : '/rescues'
     let method = rescue.uuid ? `PUT` : 'POST'
 
-    let fromAirportCodes = rescue.departing_airports.map((airport) => {
-      return airport.code
-    })
-    let toAirportCodes = rescue.arriving_airports.map((airport) => {
-      return airport.code
-    })
-
     let departingAirportUuids = rescue.departing_airports.map((airport) => {
       return airport.uuid
     })
@@ -192,8 +185,6 @@ class Rescue extends React.Component {
       "status": rescue.status,
       "available_from": rescue.available_from,
       "info_url": rescue.info_url,
-      "from_airports": fromAirportCodes,
-      "to_airports": toAirportCodes,
       "departing_airport_uuids": departingAirportUuids,
       "arriving_airport_uuids": arrivingAirportUuids,
       "organization_uuid": rescue.organization_uuid,
@@ -234,8 +225,6 @@ class Rescue extends React.Component {
     rescue.uuid = rescueData.uuid
     rescue.status = rescueData.status
     rescue.available_from = rescueData.available_from || ""
-    rescue.from_airports = rescueData.from_airports
-    rescue.to_airports = rescueData.to_airports
     rescue.departing_airports = rescueData.departing_airports
     rescue.arriving_airports = rescueData.arriving_airports
 

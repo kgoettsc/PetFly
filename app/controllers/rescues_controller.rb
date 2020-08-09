@@ -52,8 +52,6 @@ class RescuesController < ApplicationController
       receiving_user: receiving_user,
       available_from: params[:available_from],
       status: params[:status] || "active",
-      from_airports: params[:from_airports] || [],
-      to_airports: params[:to_airports] || [],
     )
 
     departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
@@ -83,8 +81,6 @@ class RescuesController < ApplicationController
       receiving_user: receiving_user,
       available_from: params[:available_from],
       status: params[:status],
-      from_airports: params[:from_airports] || [],
-      to_airports: params[:to_airports] || [],
     )
 
     departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
@@ -104,6 +100,6 @@ class RescuesController < ApplicationController
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [], departing_airport_uuids: [], arriving_airport_uuids: [])
+    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, departing_airport_uuids: [], arriving_airport_uuids: [])
   end
 end
