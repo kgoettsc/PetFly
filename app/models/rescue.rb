@@ -29,5 +29,10 @@ class Rescue < ActiveRecord::Base
   has_many :rescue_flights
   has_one :rescue_flight, -> { active }
 
+  has_many :departing_rescue_airports
+  has_many :departing_airports, through: :departing_rescue_airports, source: :airport
+  has_many :arriving_rescue_airports
+  has_many :arriving_airports, through: :arriving_rescue_airports, source: :airport
+
   scope :active, -> {where(status: 'active')}
 end

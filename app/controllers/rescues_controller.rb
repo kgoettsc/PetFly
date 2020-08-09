@@ -6,7 +6,7 @@ class RescuesController < ApplicationController
 
   def active
     # figure out ordering at somepoint
-    rescues = Rescue.includes(:organization, :animal, :receiving_user).active.order(:created_at).limit(50)
+    rescues = Rescue.includes(:organization, :animal, :receiving_user, :departing_airports, :arriving_airports).active.order(:created_at).limit(50)
 
     render json: {rescues: JsonService.rescues(rescues)}
   end
@@ -26,7 +26,7 @@ class RescuesController < ApplicationController
   end
 
   def active_by_receiving_user
-    rescues = Rescue.includes(:organization, :animal, :receiving_user)
+    rescues = Rescue.includes(:organization, :animal, :receiving_user, :departing_airports, :arriving_airports)
                     .active
                     .where(receiving_user: current_user)
                     .order(:created_at)
@@ -38,6 +38,8 @@ class RescuesController < ApplicationController
   def create
     organization = Organization.find_by(uuid: rescue_params[:organization_uuid])
     receiving_user = User.find_by(email: rescue_params[:receiving_user_email])
+    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
+    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
 
     animal = Animal.create(
       name: rescue_params[:name],
@@ -53,8 +55,11 @@ class RescuesController < ApplicationController
       available_from: params[:available_from],
       status: params[:status] || "active",
       from_airports: params[:from_airports] || [],
-      to_airports: params[:to_airports] || []
+      to_airports: params[:to_airports] || [],
     )
+
+    _rescue.departing_airports = departing_airports
+    _rescue.arriving_airports = arriving_airports
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
