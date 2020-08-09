@@ -3,10 +3,13 @@ class SeedService
     def clear_and_make
       clear_all_things
       make_new_stuff
+      create_suggestions
       user_testing_stuff
     end
 
     def clear_all_things
+      RescueAirport.delete_all
+      RescueFlight.delete_all
       Rescue.delete_all
       Animal.delete_all
       Organization.delete_all
@@ -61,7 +64,7 @@ class SeedService
           )
 
           _rescue.departing_airports = rand_airports
-          _rescue.arriving = other_rand_airports
+          _rescue.arriving_airports = other_rand_airports
         end
       end
 
@@ -76,16 +79,16 @@ class SeedService
           flight_date = generate_random_date + rand(1440).minutes
 
           rand_rescue = Rescue.offset(rand(Rescue.count)).first
-          rescue_from = rand_rescue.from_airports[rand(rand_rescue.from_airports.count)]
-          rescue_to = rand_rescue.to_airports[rand(rand_rescue.to_airports.count)]
+          departing_rescue = rand_rescue.departing_airports[rand(rand_rescue.departing_airports.count)]
+          arriving_rescue = rand_rescue.arriving_airports[rand(rand_rescue.arriving_airports.count)]
 
           Flight.create(
             user: user,
             number: rand(9999),
             departing_at: flight_date,
             arriving_at: flight_date + rand(600).minutes,
-            departing_airport: Airport.find_by(code: rescue_from),
-            arriving_airport: Airport.find_by(code: rescue_to)
+            departing_airport: departing_rescue,
+            arriving_airport: arriving_rescue
           )
         end
       end
