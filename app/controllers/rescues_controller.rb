@@ -38,8 +38,6 @@ class RescuesController < ApplicationController
   def create
     organization = Organization.find_by(uuid: rescue_params[:organization_uuid])
     receiving_user = User.find_by(email: rescue_params[:receiving_user_email])
-    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
-    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
 
     animal = Animal.create(
       name: rescue_params[:name],
@@ -58,6 +56,8 @@ class RescuesController < ApplicationController
       to_airports: params[:to_airports] || [],
     )
 
+    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
+    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
     _rescue.departing_airports = departing_airports
     _rescue.arriving_airports = arriving_airports
 
@@ -87,6 +87,11 @@ class RescuesController < ApplicationController
       to_airports: params[:to_airports] || [],
     )
 
+    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
+    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
+    _rescue.departing_airports = departing_airports
+    _rescue.arriving_airports = arriving_airports
+
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
 
@@ -99,6 +104,6 @@ class RescuesController < ApplicationController
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
+    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [], departing_airport_uuids: [], arriving_airport_uuids: [])
   end
 end

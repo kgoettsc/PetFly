@@ -48,9 +48,9 @@ class Rescue extends React.Component {
         receiving_user_email: "",
         receiving_user_first_name: "",
         receiving_user_last_name: "",
+        departing_airports: [],
+        arriving_airports: []
       },
-      selectedFromAirports: [],
-      selectedToAirports: [],
       isSaving: false,
       organizations: [],
       airports: [],
@@ -121,13 +121,9 @@ class Rescue extends React.Component {
           airports
         } = data
 
-        this.setAirports()
-
         this.setState({
           airports
         })
-
-        this.setAirports()
       },
       error: (data) => {
         console.log("error for airports")
@@ -152,14 +148,10 @@ class Rescue extends React.Component {
         console.log("got the rescue!")
         let rescue = this.mapRescueData(data.rescue)
 
-        this.setAirports()
-
         this.setState({
           rescue,
           editMode: false
         })
-
-        this.setAirports()
       },
       error: (data) => {
         console.log("error for rescue")
@@ -174,18 +166,23 @@ class Rescue extends React.Component {
 
     let {
       rescue,
-      selectedFromAirports,
-      selectedToAirports
     } = this.state
 
     let url = rescue.uuid ? `/rescues/${rescue.uuid}` : '/rescues'
     let method = rescue.uuid ? `PUT` : 'POST'
 
-    let fromAirportCodes = selectedFromAirports.map((airport) => {
+    let fromAirportCodes = rescue.departing_airports.map((airport) => {
       return airport.code
     })
-    let toAirportCodes = selectedToAirports.map((airport) => {
+    let toAirportCodes = rescue.arriving_airports.map((airport) => {
       return airport.code
+    })
+
+    let departingAirportUuids = rescue.departing_airports.map((airport) => {
+      return airport.uuid
+    })
+    let arrivingAirportUuids = rescue.arriving_airports.map((airport) => {
+      return airport.uuid
     })
 
     let params = {
@@ -197,6 +194,8 @@ class Rescue extends React.Component {
       "info_url": rescue.info_url,
       "from_airports": fromAirportCodes,
       "to_airports": toAirportCodes,
+      "departing_airport_uuids": departingAirportUuids,
+      "arriving_airport_uuids": arrivingAirportUuids,
       "organization_uuid": rescue.organization_uuid,
       "receiving_user_email": rescue.receiving_user_email,
     }
@@ -237,6 +236,8 @@ class Rescue extends React.Component {
     rescue.available_from = rescueData.available_from || ""
     rescue.from_airports = rescueData.from_airports
     rescue.to_airports = rescueData.to_airports
+    rescue.departing_airports = rescueData.departing_airports
+    rescue.arriving_airports = rescueData.arriving_airports
 
     //animal info
     rescue.name = rescueData.animal.name
@@ -256,31 +257,6 @@ class Rescue extends React.Component {
     return rescue
   }
 
-  setAirports() {
-    let {
-      airports,
-      rescue
-    } = this.state
-
-    if (!rescue.uuid || airports == []) {
-      return
-    }
-
-    let selectedFromAirports = _.filter(airports, (airport) => {
-      return _.includes(rescue.from_airports, airport.code)
-    })
-
-    let selectedToAirports = _.filter(airports, (airport) => {
-      return _.includes(rescue.to_airports, airport.code)
-    })
-
-    this.setState({
-      selectedFromAirports,
-      selectedToAirports
-    })
-
-  }
-
   setEditMode = (editMode) => (e) => {
     this.setState({
       editMode: editMode,
@@ -298,8 +274,6 @@ class Rescue extends React.Component {
   renderDisplayArea() {
     let {
       rescue,
-      selectedFromAirports,
-      selectedToAirports
     } = this.state
 
     let displayArea = (
@@ -337,7 +311,7 @@ class Rescue extends React.Component {
           variant='h5'>
           Drop Off Airports:
             <br/>
-            {selectedFromAirports.map((airport, index) => {
+            {rescue.departing_airports.map((airport, index) => {
               return (
                 <div
                   key={`fromAirport-${index}`}
@@ -351,7 +325,7 @@ class Rescue extends React.Component {
           variant='h5'>
           Pick Up Airports:
             <br/>
-            {selectedToAirports.map((airport, index) => {
+            {rescue.arriving_airports.map((airport, index) => {
               return (
                 <div
                   key={`toAirport-${index}`}
@@ -405,8 +379,6 @@ class Rescue extends React.Component {
       isSaving,
       rescue,
       organizations,
-      selectedFromAirports,
-      selectedToAirports
     } = this.state
 
     let orgSelects = organizations.map((organization, index) => {
@@ -529,8 +501,8 @@ class Rescue extends React.Component {
             multiple
             id="tags-outlined"
             options={airports}
-            value={selectedFromAirports}
-            onChange={this.saveFromAirports.bind(this)}
+            value={rescue.departing_airports}
+            onChange={this.saveDepartingAirports.bind(this)}
             renderTags={(selected, getTagProps) => (
               <div>
                 {selected.map((value) => {
@@ -559,8 +531,8 @@ class Rescue extends React.Component {
             multiple
             id="tags-outlined"
             options={airports}
-            value={selectedToAirports}
-            onChange={this.saveToAirports.bind(this)}
+            value={rescue.arriving_airports}
+            onChange={this.saveArrivingAirports.bind(this)}
             renderTags={(selected, getTagProps) => (
               <div>
                 {selected.map((value) => {
@@ -670,15 +642,23 @@ class Rescue extends React.Component {
     })
   }
 
-  saveFromAirports(event, newValue) {
+  saveDepartingAirports(event, newValue) {
+    let {rescue} = this.state;
+
+    rescue.departing_airports = newValue
+
     this.setState({
-      selectedFromAirports: newValue
+      rescue
     })
   }
 
-  saveToAirports(event, newValue) {
+  saveArrivingAirports(event, newValue) {
+    let {rescue} = this.state;
+
+    rescue.arriving_airports = newValue
+
     this.setState({
-      selectedToAirports: newValue
+      rescue
     })
   }
 
