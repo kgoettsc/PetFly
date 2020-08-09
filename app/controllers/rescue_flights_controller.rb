@@ -14,9 +14,8 @@ class RescueFlightsController < ApplicationController
 
   def by_flight
     flight = Flight.find_By(uuid: flight_rescue_params[:flight_uuid])
-    _rescues = Rescue.where(uuid: flight_rescue_params[:rescue_uuids])
 
-    rescue_flights = RescueFlight.active.where(rescue: _rescue, flight: flights)
+    rescue_flights = RescueFlight.active.where(flight: flight)
 
     render json: {rescue_flights: JsonService.rescue_flights(rescue_flights)}
   end
@@ -38,6 +37,6 @@ class RescueFlightsController < ApplicationController
   end
 
   def flight_rescue_params
-    params.permit(:flight_uuid, :rescue_uuid, flight_uuids: [], rescue_uuids: [])
+    params.permit(:flight_uuid, :rescue_uuid)
   end
 end
