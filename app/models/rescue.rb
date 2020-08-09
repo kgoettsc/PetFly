@@ -7,12 +7,8 @@
 #  organization_id   :bigint
 #  animal_id         :bigint
 #  receiving_user_id :bigint
-#  from_id           :bigint
-#  to_id             :bigint
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  from_airports     :string           default([]), is an Array
-#  to_airports       :string           default([]), is an Array
 #  status            :string
 #  available_from    :date
 #

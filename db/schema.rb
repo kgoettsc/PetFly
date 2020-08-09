@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_003754) do
+ActiveRecord::Schema.define(version: 2020_08_09_035607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,19 +118,13 @@ ActiveRecord::Schema.define(version: 2020_08_09_003754) do
     t.bigint "organization_id"
     t.bigint "animal_id"
     t.bigint "receiving_user_id"
-    t.bigint "from_id"
-    t.bigint "to_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "from_airports", default: [], array: true
-    t.string "to_airports", default: [], array: true
     t.string "status"
     t.date "available_from"
     t.index ["animal_id"], name: "index_rescues_on_animal_id"
-    t.index ["from_id"], name: "index_rescues_on_from_id"
     t.index ["organization_id"], name: "index_rescues_on_organization_id"
     t.index ["receiving_user_id"], name: "index_rescues_on_receiving_user_id"
-    t.index ["to_id"], name: "index_rescues_on_to_id"
   end
 
   create_table "users", force: :cascade do |t|
