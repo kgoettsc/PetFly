@@ -6,7 +6,7 @@ class RescuesController < ApplicationController
 
   def active
     # figure out ordering at somepoint
-    rescues = Rescue.includes(:organization, :animal, :receiving_user).active.order(:created_at).limit(50)
+    rescues = Rescue.includes(:organization, :animal, :receiving_user, :departing_airports, :arriving_airports).active.order(:created_at).limit(50)
 
     render json: {rescues: JsonService.rescues(rescues)}
   end
@@ -26,7 +26,7 @@ class RescuesController < ApplicationController
   end
 
   def active_by_receiving_user
-    rescues = Rescue.includes(:organization, :animal, :receiving_user)
+    rescues = Rescue.includes(:organization, :animal, :receiving_user, :departing_airports, :arriving_airports)
                     .active
                     .where(receiving_user: current_user)
                     .order(:created_at)
@@ -52,9 +52,12 @@ class RescuesController < ApplicationController
       receiving_user: receiving_user,
       available_from: params[:available_from],
       status: params[:status] || "active",
-      from_airports: params[:from_airports] || [],
-      to_airports: params[:to_airports] || []
     )
+
+    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
+    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
+    _rescue.departing_airports = departing_airports
+    _rescue.arriving_airports = arriving_airports
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
@@ -78,9 +81,12 @@ class RescuesController < ApplicationController
       receiving_user: receiving_user,
       available_from: params[:available_from],
       status: params[:status],
-      from_airports: params[:from_airports] || [],
-      to_airports: params[:to_airports] || [],
     )
+
+    departing_airports = Airport.where(uuid: rescue_params[:departing_airport_uuids])
+    arriving_airports = Airport.where(uuid: rescue_params[:arriving_airport_uuids])
+    _rescue.departing_airports = departing_airports
+    _rescue.arriving_airports = arriving_airports
 
     render json: {rescue: JsonService.rescue_json(_rescue)}
   end
@@ -94,6 +100,6 @@ class RescuesController < ApplicationController
   end
 
   def rescue_params
-    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, from_airports: [], to_airports: [])
+    params.permit(:name, :kind, :breed, :available_from, :info_url, :status, :organization_uuid, :receiving_user_email, departing_airport_uuids: [], arriving_airport_uuids: [])
   end
 end

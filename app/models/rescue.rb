@@ -7,12 +7,8 @@
 #  organization_id   :bigint
 #  animal_id         :bigint
 #  receiving_user_id :bigint
-#  from_id           :bigint
-#  to_id             :bigint
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  from_airports     :string           default([]), is an Array
-#  to_airports       :string           default([]), is an Array
 #  status            :string
 #  available_from    :date
 #
@@ -28,6 +24,11 @@ class Rescue < ActiveRecord::Base
 
   has_many :rescue_flights
   has_one :rescue_flight, -> { active }
+
+  has_many :departing_rescue_airports
+  has_many :departing_airports, through: :departing_rescue_airports, source: :airport
+  has_many :arriving_rescue_airports
+  has_many :arriving_airports, through: :arriving_rescue_airports, source: :airport
 
   scope :active, -> {where(status: 'active')}
 end

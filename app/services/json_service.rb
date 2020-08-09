@@ -34,8 +34,6 @@ class JsonService
 
     def rescue_json(_rescue)
       _rescue.slice(
-        :from_airports,
-        :to_airports,
         :status,
         :available_from,
         :uuid,
@@ -43,6 +41,8 @@ class JsonService
         organization: organization(_rescue.organization),
         animal: animal(_rescue.animal),
         receiving_user: user(_rescue.receiving_user),
+        departing_airports: _rescue.departing_airports,
+        arriving_airports: _rescue.arriving_airports
       )
     end
 
