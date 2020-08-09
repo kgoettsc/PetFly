@@ -29,11 +29,10 @@ class Rescue extends React.Component {
       rescueUuid
     } = props
 
-    this.getOrganizations()
-    this.getAirports()
     this.getRescue()
     this.getRescueFlights()
-    this.getMatches()
+    this.getOrganizations()
+    this.getAirports()
 
     this.state = {
       rescue: {
@@ -56,40 +55,8 @@ class Rescue extends React.Component {
       organizations: [],
       airports: [],
       editMode: !rescueUuid,
-      matches: [],
-      rescueFlightMap: {},
       rescueFlights: []
     }
-  }
-
-  getMatches() {
-    let {
-      rescueUuid
-    } = this.props
-
-    if (!rescueUuid) {
-      return
-    }
-
-    $.ajax({
-      url: `/rescues/${rescueUuid}/matches`,
-      method: 'GET',
-      contentType: 'application/json',
-      success: (data) => {
-        console.log("got the matches!")
-        let {
-          matches
-        } = data
-
-        this.setState({
-          matches,
-        })
-
-      },
-      error: (data) => {
-        console.log("error for matches")
-      }
-    });
   }
 
   getRescueFlights() {
@@ -102,7 +69,7 @@ class Rescue extends React.Component {
     }
 
     $.ajax({
-      url: `/rescue_flights/by_rescue_and_flights`,
+      url: `/rescue_flights/by_rescue`,
       method: 'GET',
       data: {
         rescue_uuid: rescueUuid,
@@ -116,23 +83,12 @@ class Rescue extends React.Component {
 
         this.setState({
           rescueFlights: rescue_flights,
-          rescueFlightMap: this.parseRescueFlights(rescue_flights),
         })
       },
       error: (data) => {
         console.log("error for rescue_flights")
       }
     });
-  }
-
-  parseRescueFlights(rescueFlights) {
-    let rescueFlightMap = {}
-
-    rescueFlights.forEach((rescueFlight) => {
-      rescueFlightMap[rescueFlight.flight_uuid] = rescueFlight
-    })
-
-    return rescueFlightMap
   }
 
   getOrganizations() {
@@ -750,15 +706,20 @@ class Rescue extends React.Component {
     )
   }
 
-  onRescueFlightComplete(rescue_flight) {
+  onRescueFlightComplete(rescueFlight) {
     let {
-      rescueFlightMap
+      rescueFlights
     } = this.state
 
-    rescueFlightMap[rescue_flight.flight_uuid] = rescue_flight
+    let index = _.findIndex(rescueFlights, (eachRescueFlight) => {
+      return rescueFlight.uuid == eachRescueFlight.uuid
+    })
+
+    rescueFlights[index] = rescueFlight
+
 
     this.setState({
-      rescueFlightMap
+      rescueFlights
     })
   }
 

@@ -45,8 +45,8 @@ Rails.application.routes.draw do
 
   resources :rescue_flights do
     collection do
-      get :by_rescue_and_flights
-      get :by_flight_and_rescues
+      get :by_rescue
+      get :by_flight
       post :create_as_rescue
     end
   end

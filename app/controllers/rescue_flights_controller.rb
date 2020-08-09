@@ -4,7 +4,7 @@ class RescueFlightsController < ApplicationController
 
   end
 
-  def by_rescue_and_flights
+  def by_rescue
     _rescue = Rescue.find_by(uuid: flight_rescue_params[:rescue_uuid])
 
     rescue_flights = RescueFlight.active.where(rescue: _rescue)
@@ -12,7 +12,7 @@ class RescueFlightsController < ApplicationController
     render json: {rescue_flights: JsonService.rescue_flights(rescue_flights)}
   end
 
-  def by_flight_and_rescues
+  def by_flight
     flight = Flight.find_By(uuid: flight_rescue_params[:flight_uuid])
     _rescues = Rescue.where(uuid: flight_rescue_params[:rescue_uuids])
 
