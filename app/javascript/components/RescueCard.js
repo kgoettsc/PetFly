@@ -118,6 +118,18 @@ class RescueCard extends React.Component {
               View Rescue
             </Button>
           </div>
+          <div>
+            <Typography
+              variant='h5'>
+              {animal.breed} ({_.capitalize(animal.kind)})
+            </Typography>
+          </div>
+          <div>
+            <Typography
+              variant='h5'>
+              Available after: {moment(rescue.available_from).format('dddd, MMMM Do YYYY')}
+            </Typography>
+          </div>
           <div
             style={{width: '100%', height: '70px'}}>
             <div
