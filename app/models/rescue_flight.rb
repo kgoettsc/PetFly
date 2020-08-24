@@ -76,5 +76,16 @@ class RescueFlight < ActiveRecord::Base
     )
   end
 
+  def request_as_flight!(user)
+    if !can_request?
+      return false
+    end
+
+    self.update!(
+      flight_approver: user,
+      requested_at: DateTime.current,
+    )
+  end
+
 
 end

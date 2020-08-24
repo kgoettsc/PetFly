@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from "prop-types"
-import { Link } from 'react-router-dom';
 
 import FlightCard from "../components/FlightCard";
 
@@ -661,8 +660,6 @@ class Rescue extends React.Component {
       return (
         <FlightCard
           key={`flightcard-${index}`}
-          flight={rescueFlight.flight}
-          rescue={rescueFlight.rescue}
           rescueFlight={rescueFlight}
           onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )
@@ -691,6 +688,7 @@ class Rescue extends React.Component {
       rescueFlights
     })
   }
+
 
   render() {
     let dataArea = this.renderArea()

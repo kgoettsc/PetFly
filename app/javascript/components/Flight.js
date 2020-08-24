@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+
+import RescueCard from "../components/RescueCard";
 
 import moment from 'moment'
 
@@ -22,9 +23,10 @@ class Flight extends React.Component {
   constructor(props){
     super(props)
 
-    this.getAirports()
     this.getFlight()
-    this.getMatches()
+    this.getRescueFlights()
+    this.getAirports()
+
 
     let {
       flightUuid
@@ -46,7 +48,7 @@ class Flight extends React.Component {
       },
       editMode: !flightUuid,
       isSaving: false,
-      matches: [],
+      rescueFlights: [],
     }
   }
 
@@ -71,9 +73,9 @@ class Flight extends React.Component {
     });
   }
 
-  getMatches() {
+  getRescueFlights() {
     let {
-      flightUuid
+      flightUuid,
     } = this.props
 
     if (!flightUuid) {
@@ -81,21 +83,24 @@ class Flight extends React.Component {
     }
 
     $.ajax({
-      url: `/flights/${flightUuid}/matches`,
+      url: `/rescue_flights/by_flight`,
       method: 'GET',
+      data: {
+        flight_uuid: flightUuid,
+      },
       contentType: 'application/json',
       success: (data) => {
-        console.log("got the matches!")
+        console.log("got the rescue_flights!")
         let {
-          matches
+          rescue_flights
         } = data
 
         this.setState({
-          matches,
+          rescueFlights: rescue_flights,
         })
       },
       error: (data) => {
-        console.log("error for matches")
+        console.log("error for rescue_flights")
       }
     });
   }
@@ -433,29 +438,41 @@ class Flight extends React.Component {
 
   renderMatchArea(){
     let {
-      matches
+      rescueFlights
     } = this.state
 
-    let displayList = matches.map((rescue, index) => {
-      let {
-        animal,
-        organization
-      } = rescue
+    let displayList = rescueFlights.map((rescueFlight, index) => {
 
       return (
-        <span
-          key={`rescues-${index}`}>
-          <Button
-            size="small"
-            component={Link}
-            to={"/rescue/" + rescue.uuid} >
-            {animal.name} - ({organization.name})
-          </Button>
-        </span>
+        <RescueCard
+          key={`rescuecard-${index}`}
+          rescueFlight={rescueFlight}
+          onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )
     })
 
-    return displayList
+    return (
+      <div>
+        {displayList}
+      </div>
+    )
+  }
+
+  onRescueFlightComplete(rescueFlight) {
+    let {
+      rescueFlights
+    } = this.state
+
+    let index = _.findIndex(rescueFlights, (eachRescueFlight) => {
+      return rescueFlight.uuid == eachRescueFlight.uuid
+    })
+
+    rescueFlights[index] = rescueFlight
+
+
+    this.setState({
+      rescueFlights
+    })
   }
 
   render() {
