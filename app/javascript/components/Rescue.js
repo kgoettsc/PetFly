@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from "prop-types"
-import { Link } from 'react-router-dom';
 
 import FlightCard from "../components/FlightCard";
 
@@ -16,7 +15,7 @@ import { TextField, IconButton, Select, MenuItem, Typography, FormControl, Input
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Edit, Cancel, Send, Check } from '@material-ui/icons';
+import { Save, Edit, Cancel, Send, Check, ArrowDownward } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 import * as DateUtils from '../packs/dateUtils.js'
@@ -296,34 +295,6 @@ class Rescue extends React.Component {
           style={{display:'block', height:45}}>
           <b>Travel Need Status: </b> {this.renderStatus(rescue.status)}
         </span>
-        <Typography
-          variant='h5'>
-          Drop Off Airports:
-            <br/>
-            {rescue.departing_airports.map((airport, index) => {
-              return (
-                <div
-                  key={`fromAirport-${index}`}
-                  style={{paddingLeft: '15px'}}>
-                  <b>{airport.code}</b> - {airport.name}
-                </div>
-              )
-            })}
-        </Typography>
-        <Typography
-          variant='h5'>
-          Pick Up Airports:
-            <br/>
-            {rescue.arriving_airports.map((airport, index) => {
-              return (
-                <div
-                  key={`toAirport-${index}`}
-                  style={{paddingLeft: '15px'}}>
-                  <b>{airport.code}</b> - {airport.name}
-                </div>
-              )
-            })}
-        </Typography>
         {rescue.info_url &&
           <Typography
             variant='h5'>
@@ -337,6 +308,48 @@ class Rescue extends React.Component {
             variant='h5'>
             {`${rescue.receiving_user_first_name} ${rescue.receiving_user_last_name}`}
           </Typography> }
+        <div
+          style={{width: '300px', paddingTop: '30px'}}>
+          Departing Airports:
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              {rescue.departing_airports.map((airport, index) => {
+                return (
+                  <div
+                    key={`fromAirport-${index}`}
+                    style={{paddingLeft: '15px'}}>
+                    <b>{airport.code}</b> - {airport.name}
+                  </div>
+                )
+              })}
+            </Typography>
+          </div>
+          <div>
+            <div
+              style={{width: '50px', margin:'auto', paddingTop: '30px', paddingBottom: '30px'}}>
+              <ArrowDownward
+                size='large' />
+            </div>
+          </div>
+          Arriving Airports:
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              {rescue.arriving_airports.map((airport, index) => {
+                return (
+                  <div
+                    key={`toAirport-${index}`}
+                    style={{paddingLeft: '15px'}}>
+                    <b>{airport.code}</b> - {airport.name}
+                  </div>
+                )
+              })}
+            </Typography>
+          </div>
+        </div>
       </div>
     )
 
@@ -661,8 +674,6 @@ class Rescue extends React.Component {
       return (
         <FlightCard
           key={`flightcard-${index}`}
-          flight={rescueFlight.flight}
-          rescue={rescueFlight.rescue}
           rescueFlight={rescueFlight}
           onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )
@@ -691,6 +702,7 @@ class Rescue extends React.Component {
       rescueFlights
     })
   }
+
 
   render() {
     let dataArea = this.renderArea()

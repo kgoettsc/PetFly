@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+
+import RescueCard from "../components/RescueCard";
 
 import moment from 'moment'
 
@@ -12,7 +13,7 @@ import { Grid, IconButton, TextField, Typography, Button } from '@material-ui/co
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Edit, Cancel } from '@material-ui/icons';
+import { Save, Edit, Cancel, ArrowDownward } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 import * as DateUtils from '../packs/dateUtils.js'
@@ -22,9 +23,10 @@ class Flight extends React.Component {
   constructor(props){
     super(props)
 
-    this.getAirports()
     this.getFlight()
-    this.getMatches()
+    this.getRescueFlights()
+    this.getAirports()
+
 
     let {
       flightUuid
@@ -42,11 +44,13 @@ class Flight extends React.Component {
         arriving_airport_uuid: "",
         departing_airport: null,
         arriving_airport: null,
-        can_transport: false
+        can_transport: false,
+        departing_airport: {},
+        arriving_airport: {},
       },
       editMode: !flightUuid,
       isSaving: false,
-      matches: [],
+      rescueFlights: [],
     }
   }
 
@@ -71,9 +75,9 @@ class Flight extends React.Component {
     });
   }
 
-  getMatches() {
+  getRescueFlights() {
     let {
-      flightUuid
+      flightUuid,
     } = this.props
 
     if (!flightUuid) {
@@ -81,21 +85,24 @@ class Flight extends React.Component {
     }
 
     $.ajax({
-      url: `/flights/${flightUuid}/matches`,
+      url: `/rescue_flights/by_flight`,
       method: 'GET',
+      data: {
+        flight_uuid: flightUuid,
+      },
       contentType: 'application/json',
       success: (data) => {
-        console.log("got the matches!")
+        console.log("got the rescue_flights!")
         let {
-          matches
+          rescue_flights
         } = data
 
         this.setState({
-          matches,
+          rescueFlights: rescue_flights,
         })
       },
       error: (data) => {
-        console.log("error for matches")
+        console.log("error for rescue_flights")
       }
     });
   }
@@ -194,6 +201,11 @@ class Flight extends React.Component {
       flight,
     } = this.state
 
+    let {
+      departing_airport,
+      arriving_airport
+    } = flight
+
     let displayArea = (
       <div>
         <div>
@@ -209,45 +221,35 @@ class Flight extends React.Component {
               fontSize='small'/>
           </IconButton>
         </div>
-        <div>
-          <Typography
-            variant='h4'>
-            Departing:
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.departing_at &&
-              `${moment(flight.departing_at).format('LLLL')}`
-            }
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.departing_airport &&
-              `\t(${flight.departing_airport.code}) ${flight.departing_airport.name}`
-            }
-          </Typography>
-        </div>
-        <div>
-          <Typography
-            variant='h4'>
-            Arriving:
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.arriving_at &&
-              `${moment(flight.arriving_at).format('LLLL')}`
-            }
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.arriving_airport &&
-              `\t(${flight.arriving_airport.code}) ${flight.arriving_airport.name}`
-            }
-          </Typography>
+        <div
+          style={{width: '300px', paddingTop: '30px'}}>
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              <b>{departing_airport.code}</b> - {departing_airport.name}
+            </Typography>
+            <div>
+              {moment(flight.departing_at).format('LLLL')}
+            </div>
+          </div>
+          <div>
+            <div
+              style={{width: '50px', margin:'auto', paddingTop: '30px', paddingBottom: '30px'}}>
+              <ArrowDownward
+                size='large' />
+            </div>
+          </div>
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              <b>{arriving_airport.code}</b> - {arriving_airport.name}
+            </Typography>
+            <div>
+              {moment(flight.arriving_at).format('LLLL')}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -433,29 +435,41 @@ class Flight extends React.Component {
 
   renderMatchArea(){
     let {
-      matches
+      rescueFlights
     } = this.state
 
-    let displayList = matches.map((rescue, index) => {
-      let {
-        animal,
-        organization
-      } = rescue
+    let displayList = rescueFlights.map((rescueFlight, index) => {
 
       return (
-        <span
-          key={`rescues-${index}`}>
-          <Button
-            size="small"
-            component={Link}
-            to={"/rescue/" + rescue.uuid} >
-            {animal.name} - ({organization.name})
-          </Button>
-        </span>
+        <RescueCard
+          key={`rescuecard-${index}`}
+          rescueFlight={rescueFlight}
+          onRescueFlightComplete={this.onRescueFlightComplete.bind(this)} />
       )
     })
 
-    return displayList
+    return (
+      <div>
+        {displayList}
+      </div>
+    )
+  }
+
+  onRescueFlightComplete(rescueFlight) {
+    let {
+      rescueFlights
+    } = this.state
+
+    let index = _.findIndex(rescueFlights, (eachRescueFlight) => {
+      return rescueFlight.uuid == eachRescueFlight.uuid
+    })
+
+    rescueFlights[index] = rescueFlight
+
+
+    this.setState({
+      rescueFlights
+    })
   }
 
   render() {
@@ -464,7 +478,6 @@ class Flight extends React.Component {
 
     return (
       <div>
-        This is where you add a flight
         <Grid
           container
           spacing={3} >

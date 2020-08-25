@@ -48,6 +48,7 @@ Rails.application.routes.draw do
       get :by_rescue
       get :by_flight
       post :create_as_rescue
+      post :create_as_flight
     end
   end
 

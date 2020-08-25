@@ -13,7 +13,7 @@ class RescueFlightsController < ApplicationController
   end
 
   def by_flight
-    flight = Flight.find_By(uuid: flight_rescue_params[:flight_uuid])
+    flight = Flight.find_by(uuid: flight_rescue_params[:flight_uuid])
 
     rescue_flights = RescueFlight.active.where(flight: flight)
 
@@ -30,6 +30,22 @@ class RescueFlightsController < ApplicationController
                     )
 
     success = rescue_flight.request_as_rescue!(current_user)
+
+    status = success == false ? :bad_request : :ok
+
+    render json: {rescue_flight: JsonService.rescue_flight(rescue_flight.reload)}, status: status
+  end
+
+  def create_as_flight
+    _rescue = Rescue.find_by(uuid: flight_rescue_params[:rescue_uuid])
+    flights = Flight.find_by(uuid: flight_rescue_params[:flight_uuid])
+
+    rescue_flight = RescueFlight.find_or_create_by(
+                      rescue: _rescue,
+                      flight: flights
+                    )
+
+    success = rescue_flight.request_as_flight!(current_user)
 
     status = success == false ? :bad_request : :ok
 

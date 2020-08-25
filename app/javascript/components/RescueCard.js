@@ -9,7 +9,7 @@ import { Card, CardActions, Typography, Button, CardContent, Chip } from '@mater
 import * as ApiUtils from '../packs/apiUtils.js'
 import { Send, Check, ArrowForward } from '@material-ui/icons'
 
-class FlightCard extends React.Component {
+class RescueCard extends React.Component {
 
   requestRescueFlight() {
     let {
@@ -23,7 +23,7 @@ class FlightCard extends React.Component {
     } = rescueFlight
 
     $.ajax({
-      url: `/rescue_flights/create_as_rescue`,
+      url: `/rescue_flights/create_as_flight`,
       method: 'POST',
       data: JSON.stringify({
         rescue_uuid: rescue.uuid,
@@ -54,13 +54,16 @@ class FlightCard extends React.Component {
     } = this.props
 
     let {
-      flight
+      rescue
     } = rescueFlight
 
     let {
-      departing_airport,
-      arriving_airport
-    } = flight
+      animal,
+      organization,
+      receiving_user,
+      departing_airports,
+      arriving_airports
+    } = rescue
 
     let requested = rescueFlight && rescueFlight.status == "requested"
 
@@ -75,11 +78,29 @@ class FlightCard extends React.Component {
         size="small"
         variant="contained"
         color="secondary"
-        onClick={this.requestRescueFlight.bind(this, flight.uuid)}
+        onClick={this.requestRescueFlight.bind(this, rescue.uuid)}
         endIcon={<Send fontSize='small' />}>
         Request
       </Button>
     )
+
+    let departingAirportInfos = departing_airports.map((airport) => {
+      return (
+        <div
+          key={`depAirport-${airport.uuid}`}>
+          <b>{airport.code}</b> - {airport.name}
+        </div>
+      )
+    })
+
+    let arrivingAirportInfos = arriving_airports.map((airport) => {
+      return (
+        <div
+          key={`arrAirport-${airport.uuid}`}>
+          <b>{airport.code}</b> - {airport.name}
+        </div>
+      )
+    })
 
     return (
       <Card variant="outlined">
@@ -88,25 +109,32 @@ class FlightCard extends React.Component {
             <Typography
               variant='h3'
               style={{display: 'inline'}}>
-              {flight.number}
+              {animal.name}
             </Typography>
             <Button
               size="small"
               component={Link}
-              to={"/flight/" + flight.uuid} >
-              View Flight
+              to={"/rescue/" + rescue.uuid} >
+              View Rescue
             </Button>
+          </div>
+          <div>
+            <Typography
+              variant='h5'>
+              {animal.breed} ({_.capitalize(animal.kind)})
+            </Typography>
+          </div>
+          <div>
+            <Typography
+              variant='h5'>
+              Available after: {moment(rescue.available_from).format('dddd, MMMM Do YYYY')}
+            </Typography>
           </div>
           <div
             style={{width: '100%', height: '70px'}}>
             <div
-              style={{float: 'left', width: '35%'}}>
-              <div>
-                <b>{departing_airport.code}</b> - {departing_airport.name}
-              </div>
-              <div>
-                {moment(flight.departing_at).format('LLLL')}
-              </div>
+              style={{float: 'left', width:'35%'}}>
+              {departingAirportInfos}
             </div>
             <div
               style={{float: 'left', paddingLeft: '10px', paddingRight: '10px'}}>
@@ -115,12 +143,7 @@ class FlightCard extends React.Component {
             </div>
             <div
               style={{float: 'left', width: '35%'}}>
-              <div>
-                <b>{arriving_airport.code}</b> - {arriving_airport.name}
-              </div>
-              <div>
-                {moment(flight.arriving_at).format('LLLL')}
-              </div>
+              {arrivingAirportInfos}
             </div>
           </div>
         </CardContent>
@@ -132,11 +155,9 @@ class FlightCard extends React.Component {
   }
 }
 
-FlightCard.propTypes = {
-  flight: PropTypes.object,
-  rescue: PropTypes.object,
+RescueCard.propTypes = {
   rescueFlight: PropTypes.object,
   onRescueFlightComplete: PropTypes.func
 }
 
-export default FlightCard
+export default RescueCard
