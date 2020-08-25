@@ -13,7 +13,7 @@ import { Grid, IconButton, TextField, Typography, Button } from '@material-ui/co
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { Save, Edit, Cancel } from '@material-ui/icons';
+import { Save, Edit, Cancel, ArrowDownward } from '@material-ui/icons';
 
 import * as ApiUtils from '../packs/apiUtils.js'
 import * as DateUtils from '../packs/dateUtils.js'
@@ -44,7 +44,9 @@ class Flight extends React.Component {
         arriving_airport_uuid: "",
         departing_airport: null,
         arriving_airport: null,
-        can_transport: false
+        can_transport: false,
+        departing_airport: {},
+        arriving_airport: {},
       },
       editMode: !flightUuid,
       isSaving: false,
@@ -199,6 +201,11 @@ class Flight extends React.Component {
       flight,
     } = this.state
 
+    let {
+      departing_airport,
+      arriving_airport
+    } = flight
+
     let displayArea = (
       <div>
         <div>
@@ -214,45 +221,35 @@ class Flight extends React.Component {
               fontSize='small'/>
           </IconButton>
         </div>
-        <div>
-          <Typography
-            variant='h4'>
-            Departing:
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.departing_at &&
-              `${moment(flight.departing_at).format('LLLL')}`
-            }
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.departing_airport &&
-              `\t(${flight.departing_airport.code}) ${flight.departing_airport.name}`
-            }
-          </Typography>
-        </div>
-        <div>
-          <Typography
-            variant='h4'>
-            Arriving:
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.arriving_at &&
-              `${moment(flight.arriving_at).format('LLLL')}`
-            }
-          </Typography>
-          <Typography
-            variant='h5'
-            style={{paddingLeft: '10px'}}>
-            {flight.arriving_airport &&
-              `\t(${flight.arriving_airport.code}) ${flight.arriving_airport.name}`
-            }
-          </Typography>
+        <div
+          style={{width: '300px', paddingTop: '30px'}}>
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              <b>{departing_airport.code}</b> - {departing_airport.name}
+            </Typography>
+            <div>
+              {moment(flight.departing_at).format('LLLL')}
+            </div>
+          </div>
+          <div>
+            <div
+              style={{width: '50px', margin:'auto', paddingTop: '30px', paddingBottom: '30px'}}>
+              <ArrowDownward
+                size='large' />
+            </div>
+          </div>
+          <div
+            style={{width: '300px', margin:'auto'}}>
+            <Typography
+              variant='h5'>
+              <b>{arriving_airport.code}</b> - {arriving_airport.name}
+            </Typography>
+            <div>
+              {moment(flight.arriving_at).format('LLLL')}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -481,7 +478,6 @@ class Flight extends React.Component {
 
     return (
       <div>
-        This is where you add a flight
         <Grid
           container
           spacing={3} >
